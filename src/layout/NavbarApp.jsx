@@ -117,33 +117,35 @@ function NavListMenu() {
           </Typography>
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
-          <MenuItem
-            className="flex items-center gap-3 rounded-lg"
-            onClick={(e) => {
-              handleMenu(e, `portfolio/project`);
-            }}>
-            <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
-              {React.createElement(SquaresPlusIcon, {
-                strokeWidth: 2,
-                className: "h-6 text-gray-900 w-6",
-              })}
-            </div>
-            <div>
-              <Typography
-                variant="h6"
-                color="blue-gray"
-                className="flex items-center text-sm font-bold">
-                See All Project
-              </Typography>
-              <Typography
-                variant="paragraph"
-                className="text-xs !font-medium text-blue-gray-500">
-                Lorem ipsum dolor amet consectetur adipisicing.
-              </Typography>
-            </div>
-          </MenuItem>
-          <hr className="my-3" />
-          <ul className="grid grid-rows-3 gap-y-2 outline-none outline-0">
+          <ul
+            className={`grid grid-rows-${renderItems.length} gap-y-2 outline-none outline-0`}>
+            <a key="0" className="border-b-2">
+              <MenuItem
+                className="flex items-center gap-3 rounded-lg"
+                onClick={(e) => {
+                  handleMenu(e, `portfolio`);
+                }}>
+                <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
+                  {React.createElement(SquaresPlusIcon, {
+                    strokeWidth: 2,
+                    className: "h-6 text-gray-900 w-6",
+                  })}
+                </div>
+                <div>
+                  <Typography
+                    variant="h6"
+                    color="blue-gray"
+                    className="flex items-center text-sm font-bold">
+                    See All Project
+                  </Typography>
+                  <Typography
+                    variant="paragraph"
+                    className="text-xs !font-medium text-blue-gray-500">
+                    Lorem ipsum dolor amet consectetur adipisicing.
+                  </Typography>
+                </div>
+              </MenuItem>
+            </a>
             {renderItems}
           </ul>
         </MenuList>

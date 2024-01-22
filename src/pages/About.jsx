@@ -11,11 +11,11 @@ const AboutPage = () => {
         <div className="lg:w-[50%]">
           <div className="text-gray-800">
             <div>
-              Hey, I'm Muhamad Windy Sulistiyo! I'm a software developer working
-              in Semarang, Indonesia.
+              Hey, I am Muhamad Windy Sulistiyo! I am a software developer
+              working in Semarang, Indonesia.
             </div>
             <div className="my-3 font-bold">
-              My field of interest's are building new Web Technologies and
+              My field of interests are building new Web Technologies and
               Products. Whenever possible, I also apply my passion for
               developing products with Node.js and Modern Javascript Library and
               Frameworks like React.js and Next.js
