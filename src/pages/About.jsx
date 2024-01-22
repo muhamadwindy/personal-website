@@ -7,8 +7,8 @@ const AboutPage = () => {
         Welcome to my digital garden.
         <div>🌱</div>
       </Typography>
-      <div className="flex justify-between mt-4">
-        <div className="w-[50%]">
+      <div className="lg:flex justify-between mt-4">
+        <div className="lg:w-[50%]">
           <div className="text-gray-800">
             <div>
               Hey, I'm Muhamad Windy Sulistiyo! I'm a software developer working
@@ -29,7 +29,7 @@ const AboutPage = () => {
               </ul>
             </div>
           </div>
-          <div className="mt-3 font-bold shadow-lg rounded-xl p-5 border-2 w-max">
+          <div className="mt-3 font-bold shadow-lg rounded-xl p-5 border-2 lg:w-max">
             <Typography variant="h6" color="purple">
               Find Me On
             </Typography>
@@ -88,7 +88,7 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-        <div className="w-[40%]">
+        <div className="lg:w-[40%]">
           <img
             src={imgSection}
             alt="Gambar e"
