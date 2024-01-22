@@ -8,7 +8,7 @@ export default function RootLayout() {
         <NavbarApp></NavbarApp>
       </header>
       <main>
-        <div className="mx-auto max-w-screen-xl my-2 py-2">
+        <div className="mx-auto max-w-screen-xl pt-4 pb-2 px-4">
           <Outlet />
         </div>
       </main>
