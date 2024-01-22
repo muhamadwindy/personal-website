@@ -1,4 +1,4 @@
-import { Button, Typography } from "@material-tailwind/react";
+import { Badge, Button, Typography } from "@material-tailwind/react";
 import image from "../../assets/image/img-los.png";
 
 const LOSPage = () => {
@@ -30,30 +30,31 @@ const LOSPage = () => {
               employed for data storage including both application configuration
               data and customer data.
             </Typography>
-
-            <Button
-              variant="gradient"
-              color="indigo"
-              className="flex items-center gap-3 h-max w-max mt-3"
-              onClick={() => {
-                window.open("https://muhamadwindy.github.io/company-profile/");
-              }}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="svg-icon"
-                style={{
-                  width: "25",
-                  height: "25",
-                  verticalAlign: "middle",
-                  fill: "white",
-                  overflow: "hidden",
-                }}
-                viewBox="0 0 1024 1024"
-                version="1.1">
-                <path d="M947.4 464.2c-46.5-75.3-109.1-135.9-187.7-181.6-78.6-45.7-161.6-68.6-249-68.6s-170.4 22.9-249 68.6C183.1 328.3 120.5 388.9 74 464.2c-6.6 11.5-10 22.8-10 34s3.3 22.5 10 34c46.5 75.3 109.1 135.9 187.7 181.6 78.6 45.7 161.6 68.6 249 68.6s170.4-22.8 249-68.3c78.6-45.6 141.1-106.2 187.7-181.9 6.6-11.5 10-22.8 10-34-0.1-11.2-3.4-22.5-10-34z m-543.8-135c29.7-29.4 65.4-44.2 107-44.2 6.7 0 12.3 2.3 17 6.9 4.6 4.6 7 10.2 7 16.8 0 6.6-2.3 12.2-7 16.8-4.7 4.6-10.3 6.9-17 6.9-28.5 0-53 10.1-73.3 30.1-20.3 20-30.4 44.2-30.4 72.5 0 6.6-2.3 12.3-7 16.8-4.6 4.6-10.3 6.8-17 6.9-6.7 0-12.3-2.3-17-6.9-4.6-4.6-7-10.2-7-16.8 0.1-41.1 15-76.4 44.7-105.8z m323.7 330.2c-66.6 40-138.8 60-216.7 60-77.8 0-150-20-216.7-60-66.6-40-122-93.7-166.2-161.1 50.5-77.6 113.9-135.7 190-174.2-20.3 34.2-30.4 71.3-30.4 111.1 0 60.9 21.9 113 65.5 156.2 43.7 43.2 96.3 64.8 157.8 64.9 61.5 0 114.1-21.6 157.8-64.9C712.1 548 734 495.9 734 435.1c0-39.8-10.1-76.8-30.4-111.1 76.1 38.5 139.5 96.6 190 174.2-44.3 67.5-99.7 121.2-166.3 161.2z" />
-              </svg>
-              Open
-            </Button>
+            <Badge content="Confidential">
+              <Button
+                variant="gradient"
+                color="indigo"
+                className="flex items-center gap-3 h-max w-max mt-3"
+                onClick={() => {
+                  window.open(
+                    `https://wa.me/6285640229650?text=Halo%20Muhamad%20Windy,%20Saya%20ingin%20meminta%20anda%20untuk%20menampilkan%20demo%20aplikasi%20Loan%20Origination%20System.`
+                  );
+                }}>
+                <svg
+                  fill="white"
+                  version="1.1"
+                  x="0px"
+                  y="0px"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 485.213 485.212">
+                  <g>
+                    <path d="M363.908,212.282v-90.978C363.908,54.434,309.509,0,242.606,0c-66.884,0-121.302,54.434-121.302,121.304v90.978   c-33.498,0-60.653,27.158-60.653,60.648v151.629c0,33.5,27.155,60.653,60.653,60.653h242.604c33.491,0,60.653-27.153,60.653-60.653   V272.93C424.562,239.439,397.399,212.282,363.908,212.282z M257.77,359.257v50.139c0,8.382-6.781,15.163-15.163,15.163   c-8.382,0-15.164-6.781-15.164-15.163v-50.139c-8.9-5.269-15.161-14.57-15.161-25.673c0-16.765,13.579-30.327,30.324-30.327   c16.745,0,30.326,13.562,30.326,30.327C272.933,344.687,266.665,353.989,257.77,359.257z M303.255,212.282h-121.3v-90.978   c0-33.465,27.2-60.653,60.651-60.653c33.435,0,60.648,27.188,60.648,60.653V212.282z" />
+                  </g>
+                </svg>
+                Request Demo Application
+              </Button>
+            </Badge>
           </div>
         </figcaption>
       </figure>
