@@ -4,9 +4,9 @@ import image from "../../assets/image/img-sulistiyo-news.png";
 const NewsPortalPage = () => {
   return (
     <>
-      <figure className="relative h-[80vh] w-full ">
+      <figure className="relative h-[80vh] w-full">
         <img
-          className="h-full w-full rounded-xl object-cover object-right-top"
+          className="h-full w-full rounded-xl object-cover object-left-top"
           src={image}
           alt="news image"
         />
