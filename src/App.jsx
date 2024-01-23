@@ -8,6 +8,7 @@ import CompanyProfilePage from "./pages/portfolio/CompanyProfile";
 import LOSPage from "./pages/portfolio/LOS";
 import NewsPortalPage from "./pages/portfolio/NewsPortal";
 import ContactPage from "./pages/Contact";
+import PortfolioPage from "./pages/portfolio/Portfolio";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +23,15 @@ const router = createBrowserRouter([
         path: "/portfolio",
         children: [
           {
-            path: "company-profile",
+            path: "/portfolio/",
+            element: <PortfolioPage />,
+          },
+          {
+            path: "/portfolio/company-profile",
             element: <CompanyProfilePage />,
           },
-          { path: "los", element: <LOSPage /> },
-          { path: "news-portal", element: <NewsPortalPage /> },
+          { path: "/portfolio/los", element: <LOSPage /> },
+          { path: "/portfolio/news-portal", element: <NewsPortalPage /> },
         ],
       },
       { path: "/contact", element: <ContactPage /> },

@@ -100,7 +100,7 @@ function NavListMenu() {
               className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}>
-              Portofolio Project
+              Portfolio Project
               <ChevronDownIcon
                 strokeWidth={2.5}
                 className={`hidden h-3 w-3 transition-transform lg:block ${
@@ -134,7 +134,7 @@ function NavListMenu() {
                 <div>
                   <Typography
                     variant="h6"
-                    color="blue-gray"
+                    color="indigo"
                     className="flex items-center text-sm font-bold">
                     See All Project
                   </Typography>
@@ -151,7 +151,36 @@ function NavListMenu() {
         </MenuList>
       </Menu>
       <div className="block lg:hidden">
-        <Collapse open={isMobileMenuOpen}>{renderItems}</Collapse>
+        <Collapse open={isMobileMenuOpen}>
+          <a key="0" className="border-b-2">
+            <MenuItem
+              className="flex items-center gap-3 rounded-lg"
+              onClick={(e) => {
+                handleMenu(e, `portfolio`);
+              }}>
+              <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
+                {React.createElement(SquaresPlusIcon, {
+                  strokeWidth: 2,
+                  className: "h-6 text-gray-900 w-6",
+                })}
+              </div>
+              <div>
+                <Typography
+                  variant="h6"
+                  color="indigo"
+                  className="flex items-center text-sm font-bold">
+                  See All Project
+                </Typography>
+                <Typography
+                  variant="paragraph"
+                  className="text-xs !font-medium text-blue-gray-500">
+                  Lorem ipsum dolor amet consectetur adipisicing.
+                </Typography>
+              </div>
+            </MenuItem>
+          </a>
+          {renderItems}
+        </Collapse>
       </div>
     </React.Fragment>
   );
