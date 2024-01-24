@@ -20,6 +20,9 @@ import {
   Bars4Icon,
   SquaresPlusIcon,
   UserGroupIcon,
+  NewspaperIcon,
+  HomeModernIcon,
+  PresentationChartBarIcon,
 } from "@heroicons/react/24/solid";
 
 import { useNavigate } from "react-router-dom";
@@ -28,7 +31,7 @@ const navListMenuItems = [
   {
     title: "Company Profile",
     description: "Find the perfect solution for your needs.",
-    icon: SquaresPlusIcon,
+    icon: HomeModernIcon,
     url: "company-profile",
   },
   {
@@ -40,13 +43,13 @@ const navListMenuItems = [
   {
     title: "News Portal",
     description: "Update your infromation with lates news",
-    icon: Bars4Icon,
+    icon: NewspaperIcon,
     url: "news-portal",
   },
   {
     title: "Admin Application",
     description: "Manage your setting application",
-    icon: Bars4Icon,
+    icon: PresentationChartBarIcon,
     url: "admin-app",
   },
 ];

@@ -2,6 +2,7 @@ import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import imgCompanyProfile from "../../assets/image/img-company-profile.png";
 import imgLOS from "../../assets/image/img-los.png";
 import imgSulistiyoNews from "../../assets/image/img-sulistiyo-news.png";
+import imgAdminApp from "../../assets/image/img-admin-app.png";
 import { useNavigate } from "react-router-dom";
 
 const PortfolioPage = () => {
@@ -35,7 +36,7 @@ const PortfolioPage = () => {
       title: "Admin Application",
       description: `The idea of this application is an application that can be used by
       administrators to manage the system.`,
-      image: imgSulistiyoNews,
+      image: imgAdminApp,
       urlDetail: "admin-app",
       urlApp: "https://muhamadwindy.github.io/admin-app/",
       urlGithub: "https://github.com/muhamadwindy/admin-app",
