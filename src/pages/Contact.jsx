@@ -14,8 +14,7 @@ const ContactPage = () => {
       <div className="px-6 md:px-12">
         <div
           className="shadow-md block rounded-xl bg-white
-        px-1 py-6  
-         md:py-6 md:px-1 
+        px-6 py-6 md:py-6 md:px-1 lg:px-1 
          -mt-[150px] backdrop-blur-2xl">
           <div className="flex flex-wrap">
             <div className="w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6">

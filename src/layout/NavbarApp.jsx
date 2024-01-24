@@ -17,7 +17,6 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
-  Bars4Icon,
   SquaresPlusIcon,
   UserGroupIcon,
   NewspaperIcon,
