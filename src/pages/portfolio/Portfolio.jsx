@@ -19,7 +19,7 @@ const PortfolioPage = () => {
       description: `This web application is used to assist financial and banking
       companies in their operational activities.`,
       image: imgLOS,
-      urlDetail: "portfolio/los",
+      urlDetail: "los",
       urlApp: "",
       urlGithub: "",
     },
@@ -30,6 +30,15 @@ const PortfolioPage = () => {
       urlDetail: "news-portal",
       urlApp: "https://muhamadwindy.github.io/sulistiyo-news/",
       urlGithub: "https://github.com/muhamadwindy/sulistiyo-news",
+    },
+    {
+      title: "Admin Application",
+      description: `The idea of this application is an application that can be used by
+      administrators to manage the system.`,
+      image: imgSulistiyoNews,
+      urlDetail: "admin-app",
+      urlApp: "https://muhamadwindy.github.io/admin-app/",
+      urlGithub: "https://github.com/muhamadwindy/admin-app",
     },
   ];
 
@@ -48,7 +57,7 @@ const PortfolioPage = () => {
           return (
             <div
               key={portfolio.title}
-              className="max-w-[300px] bg-white rounded-lg overflow-hidden shadow-lg">
+              className="md:max-w-80 bg-white rounded-lg overflow-hidden shadow-lg">
               <div className="relative">
                 <img
                   className="w-full"

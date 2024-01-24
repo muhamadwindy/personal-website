@@ -39,9 +39,15 @@ const navListMenuItems = [
   },
   {
     title: "News Portal",
-    description: "Find the perfect solution for your needs.",
+    description: "Update your infromation with lates news",
     icon: Bars4Icon,
     url: "news-portal",
+  },
+  {
+    title: "Admin Application",
+    description: "Manage your setting application",
+    icon: Bars4Icon,
+    url: "admin-app",
   },
 ];
 
