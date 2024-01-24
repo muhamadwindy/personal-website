@@ -21,7 +21,12 @@ const HomePage = () => {
           <Button
             color="indigo"
             variant="gradient"
-            className="normal-case font-normal mt-4">
+            className="normal-case font-normal mt-4"
+            onClick={() => {
+              window.open(
+                `https://wa.me/6285640229650?text=Halo%20Muhamad%20Windy,%20Saya%20ingin%20menawari%20anda%20pekerjaan.`
+              );
+            }}>
             Hire Me!
           </Button>
         </div>
