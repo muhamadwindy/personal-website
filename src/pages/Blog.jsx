@@ -5,11 +5,11 @@ import {
   CardHeader,
   Typography,
 } from "@material-tailwind/react";
-import a1 from "../assets/image/blog/artikel-1.jpg";
-import a2 from "../assets/image/blog/artikel-2.jpg";
-import a3 from "../assets/image/blog/artikel-3.jpg";
-import a4 from "../assets/image/blog/artikel-4.jpg";
-import a5 from "../assets/image/blog/artikel-5.jpg";
+import a1 from "../assets/image/blog/Artikel-1.jpg";
+import a2 from "../assets/image/blog/Artikel-2.jpg";
+import a3 from "../assets/image/blog/Artikel-3.jpg";
+import a4 from "../assets/image/blog/Artikel-4.jpg";
+import a5 from "../assets/image/blog/Artikel-5.jpg";
 
 const Blog = () => {
   const dataBlog = [
