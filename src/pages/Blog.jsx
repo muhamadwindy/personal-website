@@ -1,6 +1,5 @@
 import {
   Button,
-  Card,
   CardBody,
   CardHeader,
   Typography,
@@ -82,11 +81,11 @@ const Blog = () => {
         {dataBlog.map((item) => {
           return (
             <div key={item.id}>
-              <Card className="w-full max-w-full flex-row">
+              <div className="relative md:flex bg-clip-border rounded-xl bg-white text-gray-700 shadow-md w-full w-full max-w-full flex-row">
                 <CardHeader
                   shadow={false}
                   floated={false}
-                  className="m-0 w-2/6 shrink-0 rounded-r-none">
+                  className="m-0 md:w-2/6 md:shrink-0 md:rounded-r-none">
                   <img
                     src={item.image}
                     alt="card-image"
@@ -97,7 +96,10 @@ const Blog = () => {
                   <Typography variant="small" color="gray" className="mb-1">
                     {item.publishDate}
                   </Typography>
-                  <Typography variant="h4" color="blue-gray" className="mb-2">
+                  <Typography
+                    variant="h4"
+                    color="blue-gray"
+                    className="hidden md:block mb-2">
                     {item.title}
                   </Typography>
                   <Typography
@@ -128,7 +130,7 @@ const Blog = () => {
                     </Button>
                   </a>
                 </CardBody>
-              </Card>
+              </div>
             </div>
           );
         })}
