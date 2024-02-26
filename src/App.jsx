@@ -10,6 +10,7 @@ import NewsPortalPage from "./pages/portfolio/NewsPortal";
 import ContactPage from "./pages/Contact";
 import PortfolioPage from "./pages/portfolio/Portfolio";
 import AdminAppPage from "./pages/portfolio/AdminApp";
+import Blog from "./pages/Blog";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/home", element: <HomePage /> },
       { path: "/about", element: <AboutPage /> },
+      { path: "/blog", element: <Blog /> },
       { path: "/skills", element: <SkillsPage /> },
       {
         path: "/portfolio",

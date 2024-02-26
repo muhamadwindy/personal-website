@@ -50,15 +50,15 @@ const PortfolioPage = () => {
   };
   return (
     <>
-      <Typography variant="h3" color="indigo">
+      <Typography variant="h3" color="indigo" className="mb-4">
         My Portfolio
       </Typography>
-      <div className="flex flex-wrap justify-between gap-2">
+      <div className="flex flex-wrap justify-between gap-7">
         {dataPortfolio.map((portfolio) => {
           return (
             <div
               key={portfolio.title}
-              className="md:max-w-80 bg-white rounded-lg overflow-hidden shadow-lg">
+              className="md:max-w-[45%] lg:max-w-[350px] bg-white rounded-lg overflow-hidden shadow-lg">
               <div className="relative">
                 <img
                   className="w-full"

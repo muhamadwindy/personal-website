@@ -236,6 +236,16 @@ function NavList() {
           Skills
         </ListItem>
       </Typography>
+      <Typography
+        as="a"
+        onClick={(e) => {
+          handleMenu(e, "blog");
+        }}
+        variant="small"
+        color="blue-gray"
+        className="font-medium">
+        <ListItem className="flex items-center gap-2 py-2 pr-4">Blog</ListItem>
+      </Typography>
       <NavListMenu />
       <Typography
         as="a"
