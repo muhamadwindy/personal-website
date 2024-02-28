@@ -3,6 +3,7 @@ import imgCompanyProfile from "../../assets/image/img-company-profile.png";
 import imgLOS from "../../assets/image/img-los.png";
 import imgSulistiyoNews from "../../assets/image/img-sulistiyo-news.png";
 import imgAdminApp from "../../assets/image/img-admin-app.png";
+import imgRestologi from "../../assets/image/img-restologi.png";
 import { useNavigate } from "react-router-dom";
 
 const PortfolioPage = () => {
@@ -41,6 +42,16 @@ const PortfolioPage = () => {
       urlApp: "https://muhamadwindy.github.io/admin-app/",
       urlGithub: "https://github.com/muhamadwindy/admin-app",
     },
+    {
+      title: "Restaurant Catalog",
+      description: `Welcome to our Restaurant Catalog, an exploration of the finest dining establishments in various cities 
+      and countries. From traditional flavors to creative innovations, we've curated places worth experiencing, 
+      bringing you an unforgettable culinary adventure.`,
+      image: imgRestologi,
+      urlDetail: "restologi",
+      urlApp: "https://muhamadwindy.github.io/restologi",
+      urlGithub: "https://github.com/muhamadwindy/restologi",
+    },
   ];
 
   const navigate = useNavigate();
@@ -53,7 +64,7 @@ const PortfolioPage = () => {
       <Typography variant="h3" color="indigo" className="mb-4">
         My Portfolio
       </Typography>
-      <div className="flex flex-wrap justify-between gap-7">
+      <div className="flex flex-wrap gap-7">
         {dataPortfolio.map((portfolio) => {
           return (
             <div

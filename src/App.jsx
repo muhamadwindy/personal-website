@@ -11,6 +11,7 @@ import ContactPage from "./pages/Contact";
 import PortfolioPage from "./pages/portfolio/Portfolio";
 import AdminAppPage from "./pages/portfolio/AdminApp";
 import Blog from "./pages/Blog";
+import RestologiPage from "./pages/portfolio/Restologi";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
           { path: "/portfolio/los", element: <LOSPage /> },
           { path: "/portfolio/news-portal", element: <NewsPortalPage /> },
           { path: "/portfolio/admin-app", element: <AdminAppPage /> },
+          { path: "/portfolio/restologi", element: <RestologiPage /> },
         ],
       },
       { path: "/contact", element: <ContactPage /> },
