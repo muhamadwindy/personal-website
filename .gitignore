@@ -24,3 +24,11 @@ dist-ssr
 *.sw?
 
 /package-lock.json
+
+# Next.js
+.next/
+out/
+
+# Screenshots
+screenshot-*.png
+shot-*.png

@@ -1,9 +1,18 @@
-const withMT = require("@material-tailwind/react/utils/withMT");
-
-module.exports = withMT({
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class',
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        spin: "spin 8s linear infinite",
+      },
+    },
   },
-  plugins: [require("@tailwindcss/line-clamp")],
-});
+  plugins: [],
+};
