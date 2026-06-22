@@ -1,20 +1,27 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const roles = [
+const defaultRoles = [
   "Full Stack Developer",
   "Next.js Engineer",
   ".NET & C# Developer",
   "Software Developer",
 ];
 
-export default function TypewriterRole() {
+export default function TypewriterRole({ roles: propRoles }) {
+  const roles = propRoles || defaultRoles;
   const [index, setIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const current = roles[index];
+    setDisplayed("");
+    setDeleting(false);
+    setIndex(0);
+  }, [roles]);
+
+  useEffect(() => {
+    const current = roles[index % roles.length];
 
     if (!deleting && displayed === current) {
       const pause = setTimeout(() => setDeleting(true), 2200);
@@ -37,7 +44,7 @@ export default function TypewriterRole() {
     }, speed);
 
     return () => clearTimeout(timer);
-  }, [displayed, deleting, index]);
+  }, [displayed, deleting, index, roles]);
 
   return (
     <div className="flex items-center gap-1.5 h-8">

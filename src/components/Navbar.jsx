@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
+import { useLanguage } from "./LanguageProvider";
+import i18n from "@/data/i18n";
 import {
   SunIcon,
   MoonIcon,
@@ -10,20 +12,23 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/skills", label: "Skills" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+const navKeys = [
+  { href: "/", key: "home" },
+  { href: "/about", key: "about" },
+  { href: "/skills", key: "skills" },
+  { href: "/portfolio", key: "portfolio" },
+  { href: "/blog", key: "blog" },
+  { href: "/contact", key: "contact" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
+  const { lang, toggleLang } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navLabels = i18n[lang].nav;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -53,9 +58,9 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* ── Right: nav links + theme toggle (desktop) ── */}
+          {/* ── Right: nav links + lang + theme (desktop) ── */}
           <div className="hidden lg:flex items-center gap-0.5">
-            {navLinks.map(({ href, label }) => {
+            {navKeys.map(({ href, key }) => {
               const active =
                 pathname === href ||
                 (href !== "/" && pathname.startsWith(href));
@@ -68,18 +73,29 @@ export default function Navbar() {
                       ? "text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-500/10"
                       : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5"
                   }`}>
-                  {label}
+                  {navLabels[key]}
                 </Link>
               );
             })}
 
             <div className="w-px h-5 bg-gray-200 dark:bg-white/10 mx-2" />
 
+            {/* Language toggle */}
+            <button
+              onClick={toggleLang}
+              aria-label="Toggle language"
+              title={lang === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
+              className="h-8 px-2.5 rounded-lg flex items-center gap-1.5 text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 transition-all duration-150 tracking-wide">
+              <span className="text-base leading-none">
+                {lang === "en" ? "🇮🇩" : "🇬🇧"}
+              </span>
+              <span>{lang === "en" ? "ID" : "EN"}</span>
+            </button>
+
+            {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              aria-label={
-                theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-              }
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
               className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 transition-all duration-150">
               {theme === "dark" ? (
                 <SunIcon className="w-[18px] h-[18px]" />
@@ -89,8 +105,14 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* ── Mobile: theme toggle + hamburger ── */}
+          {/* ── Mobile: lang + theme + hamburger ── */}
           <div className="flex lg:hidden items-center gap-1">
+            <button
+              onClick={toggleLang}
+              aria-label="Toggle language"
+              className="h-9 px-2 rounded-lg flex items-center text-base hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
+              {lang === "en" ? "🇮🇩" : "🇬🇧"}
+            </button>
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
@@ -121,7 +143,7 @@ export default function Navbar() {
           menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}>
         <div className="px-5 pb-4 pt-1 space-y-0.5 border-t border-gray-200/60 dark:border-white/5">
-          {navLinks.map(({ href, label }) => {
+          {navKeys.map(({ href, key }) => {
             const active =
               pathname === href ||
               (href !== "/" && pathname.startsWith(href));
@@ -134,7 +156,7 @@ export default function Navbar() {
                     ? "text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-500/10"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5"
                 }`}>
-                {label}
+                {navLabels[key]}
               </Link>
             );
           })}

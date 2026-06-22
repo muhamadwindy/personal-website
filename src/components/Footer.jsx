@@ -1,21 +1,28 @@
+"use client";
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
+import i18n from "@/data/i18n";
+
+const navKeys = [
+  { key: "home", href: "/" },
+  { key: "about", href: "/about" },
+  { key: "skills", href: "/skills" },
+  { key: "portfolio", href: "/portfolio" },
+  { key: "blog", href: "/blog" },
+  { key: "contact", href: "/contact" },
+];
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/muhamadwindy" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/muhamad-windy-sulistiyo-505653120" },
+  { label: "Medium", href: "https://medium.com/@muhamadwindy" },
+  { label: "Instagram", href: "https://www.instagram.com/mwsulistiyo" },
+];
 
 export default function Footer() {
-  const links = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Skills", href: "/skills" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
-  ];
-
-  const socials = [
-    { label: "GitHub", href: "https://github.com/muhamadwindy" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/muhamad-windy-sulistiyo-505653120" },
-    { label: "Medium", href: "https://medium.com/@muhamadwindy" },
-    { label: "Instagram", href: "https://www.instagram.com/mwsulistiyo" },
-  ];
+  const { lang } = useLanguage();
+  const t = i18n[lang].footer;
+  const navLabels = i18n[lang].nav;
 
   return (
     <footer className="border-t border-gray-200 dark:border-white/5 mt-24">
@@ -29,24 +36,21 @@ export default function Footer() {
               </div>
               <span className="font-semibold text-gray-900 dark:text-white">Muhamad Windy</span>
             </div>
-            <p className="text-sm text-gray-500 leading-relaxed">
-              Full Stack Developer based in Semarang, Indonesia. 10+ years
-              building enterprise and modern web solutions.
-            </p>
+            <p className="text-sm text-gray-500 leading-relaxed">{t.desc}</p>
           </div>
 
           {/* Nav Links */}
           <div>
             <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-              Navigation
+              {t.navigation}
             </p>
             <div className="grid grid-cols-2 gap-1.5">
-              {links.map((link) => (
+              {navKeys.map(({ key, href }) => (
                 <Link
-                  key={link.href}
-                  href={link.href}
+                  key={href}
+                  href={href}
                   className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
-                  {link.label}
+                  {navLabels[key]}
                 </Link>
               ))}
             </div>
@@ -55,7 +59,7 @@ export default function Footer() {
           {/* Social Links */}
           <div>
             <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-              Connect
+              {t.connect}
             </p>
             <div className="space-y-1.5">
               {socials.map((s) => (
@@ -73,7 +77,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 border-t border-gray-200 dark:border-white/5 text-center text-sm text-gray-400 dark:text-gray-600">
-          © 2025 Muhamad Windy Sulistiyo. All rights reserved.
+          {t.copyright}
         </div>
       </div>
     </footer>
