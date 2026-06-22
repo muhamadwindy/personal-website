@@ -129,6 +129,7 @@ export default function PortfolioContent() {
                 src={featured.image}
                 alt={featured.title}
                 fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 priority
               />
@@ -193,6 +194,8 @@ export default function PortfolioContent() {
                   src={project.image}
                   alt={project.title}
                   fill
+                  loading="lazy"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-600"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

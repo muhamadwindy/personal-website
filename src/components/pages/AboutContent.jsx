@@ -114,7 +114,7 @@ export default function AboutContent() {
           <div className="lg:col-span-2 relative">
             <div className="absolute -inset-4 bg-gradient-to-br from-violet-500/15 to-cyan-400/10 rounded-3xl blur-2xl" />
             <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/8">
-              <Image src={imgAbout} alt="About illustration" className="w-full" />
+              <Image src={imgAbout} alt="About illustration" className="w-full" sizes="(max-width: 1024px) 100vw, 40vw" loading="lazy" />
             </div>
           </div>
         </div>

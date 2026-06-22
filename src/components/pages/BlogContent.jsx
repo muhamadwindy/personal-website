@@ -127,6 +127,7 @@ export default function BlogContent() {
               src={featured.image}
               alt={featured.title}
               fill
+              sizes="(max-width: 1024px) 100vw, 52vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700"
               priority
             />
@@ -179,7 +180,7 @@ export default function BlogContent() {
               rel="noreferrer"
               className="glass-card rounded-2xl overflow-hidden group hover:border-violet-500/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/8 flex flex-col block">
               <div className="relative h-48 overflow-hidden flex-shrink-0">
-                <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Image src={post.image} alt={post.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute top-3 left-3"><TagBadge tag={post.tag} /></div>
               </div>

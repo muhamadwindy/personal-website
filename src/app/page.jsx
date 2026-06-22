@@ -176,6 +176,7 @@ export default function HomePage() {
                       src={fotowindy}
                       alt="Muhamad Windy Sulistiyo"
                       fill
+                      sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, (max-width: 1280px) 380px, 420px"
                       className="object-cover"
                       priority
                     />

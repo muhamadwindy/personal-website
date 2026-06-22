@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const defaultRoles = [
   "Full Stack Developer",
@@ -10,15 +10,19 @@ const defaultRoles = [
 
 export default function TypewriterRole({ roles: propRoles }) {
   const roles = propRoles || defaultRoles;
+  const rolesKey = roles.join("|");
+
   const [index, setIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
+  const prevKeyRef = useRef(rolesKey);
 
-  useEffect(() => {
+  if (prevKeyRef.current !== rolesKey) {
+    prevKeyRef.current = rolesKey;
+    setIndex(0);
     setDisplayed("");
     setDeleting(false);
-    setIndex(0);
-  }, [roles]);
+  }
 
   useEffect(() => {
     const current = roles[index % roles.length];
@@ -44,7 +48,7 @@ export default function TypewriterRole({ roles: propRoles }) {
     }, speed);
 
     return () => clearTimeout(timer);
-  }, [displayed, deleting, index, roles]);
+  }, [displayed, deleting, index, rolesKey]); // eslint-disable-line
 
   return (
     <div className="flex items-center gap-1.5 h-8">
