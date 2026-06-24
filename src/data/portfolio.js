@@ -54,4 +54,15 @@ export const portfolioData = [
     urlApp: "https://muhamadwindy.github.io/restologi",
     urlGithub: "https://github.com/muhamadwindy/restologi",
   },
+  {
+    slug: "musholla-baitul-muttaqin",
+    title: "Musholla Baitul Muttaqin",
+    subtitle: "Mosque Profile Website",
+    description:
+      "A profile website for Musholla Baitul Muttaqin, providing information about prayer schedules, mosque activities, and facilities for the community.",
+    image: "/img-musholla-baitul-muttaqin.png",
+    stack: ["Next.js", "Tailwind CSS"],
+    urlApp: "https://musholla-baitul-muttaqin.vercel.app/",
+    urlGithub: "",
+  },
 ];

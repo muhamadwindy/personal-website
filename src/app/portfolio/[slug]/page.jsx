@@ -103,6 +103,26 @@ const projects = [
     urlApp: "https://muhamadwindy.github.io/restologi",
     urlGithub: "https://github.com/muhamadwindy/restologi",
   },
+  {
+    slug: "musholla-baitul-muttaqin",
+    title: "Musholla Baitul Muttaqin",
+    subtitle: "Mosque Profile Website",
+    description:
+      "A profile website for Musholla Baitul Muttaqin, providing information about prayer schedules, mosque activities, and facilities for the surrounding community.",
+    longDescription:
+      "This project is a community mosque profile website built with Next.js and Tailwind CSS. It presents the mosque's identity, daily prayer schedules, upcoming programs, and facility information in a clean, accessible layout. The site is deployed on Vercel for fast and reliable performance.",
+    image: "/img-musholla-baitul-muttaqin.png",
+    stack: ["Next.js", "Tailwind CSS"],
+    features: [
+      "Mosque profile and identity information",
+      "Daily prayer schedule display",
+      "Community programs & activities",
+      "Responsive layout for all devices",
+      "Fast performance with Next.js & Vercel",
+    ],
+    urlApp: "https://musholla-baitul-muttaqin.vercel.app/",
+    urlGithub: "",
+  },
 ];
 
 export async function generateStaticParams() {

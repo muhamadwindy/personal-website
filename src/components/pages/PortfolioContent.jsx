@@ -64,6 +64,18 @@ const projects = [
     urlApp: "https://muhamadwindy.github.io/restologi",
     urlGithub: "https://github.com/muhamadwindy/restologi",
   },
+  {
+    slug: "musholla-baitul-muttaqin",
+    num: "06",
+    title: "Musholla Baitul Muttaqin",
+    subtitle: "Mosque Profile Website",
+    category: "Web",
+    description: "Responsive profile website for a mosque community, featuring prayer schedules, activities, and facility information built with Next.js.",
+    image: "/img-musholla-baitul-muttaqin.png",
+    stack: ["Next.js", "Tailwind CSS"],
+    urlApp: "https://musholla-baitul-muttaqin.vercel.app/",
+    urlGithub: "",
+  },
 ];
 
 const categoryStyle = {

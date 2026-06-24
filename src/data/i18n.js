@@ -97,7 +97,7 @@ const i18n = {
       hireMe: "Hire Me",
       getInTouch: "Get in Touch",
       stats: [
-        { val: "5", label: "Projects" },
+        { val: "6", label: "Projects" },
         { val: "3", label: "Industries" },
         { val: "10+", label: "Years" },
       ],
@@ -238,7 +238,7 @@ const i18n = {
       hireMe: "Hubungi Saya",
       getInTouch: "Hubungi",
       stats: [
-        { val: "5", label: "Proyek" },
+        { val: "6", label: "Proyek" },
         { val: "3", label: "Industri" },
         { val: "10+", label: "Tahun" },
       ],
