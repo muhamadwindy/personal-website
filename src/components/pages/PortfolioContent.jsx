@@ -65,8 +65,21 @@ const projects = [
     urlGithub: "https://github.com/muhamadwindy/restologi",
   },
   {
-    slug: "musholla-baitul-muttaqin",
+    slug: "saham-screener",
     num: "06",
+    title: "IDX Stock Screener",
+    subtitle: "Fintech · Stock Analysis Dashboard",
+    category: "Fintech",
+    description:
+      "Full-stack stock screening dashboard for IDX Indonesia, combining fundamental scoring, technical indicators, and broker flow analysis (bandar detection) with an automated daily ETL pipeline — built with Next.js 14, Python, and Neon PostgreSQL.",
+    image: "/img-saham-screener.png",
+    stack: ["Next.js 14", "TypeScript", "Python", "PostgreSQL", "Drizzle ORM", "GitHub Actions", "Tailwind CSS"],
+    urlApp: "https://saham-screener-xi.vercel.app/",
+    urlGithub: "https://github.com/muhamadwindy/saham-screener",
+  },
+  {
+    slug: "musholla-baitul-muttaqin",
+    num: "07",
     title: "Musholla Baitul Muttaqin",
     subtitle: "Mosque Profile Website",
     category: "Web",
@@ -82,6 +95,7 @@ const categoryStyle = {
   Enterprise: "bg-violet-500/12 text-violet-700 dark:text-violet-300 border-violet-500/25",
   Web: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/20",
   PWA: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20",
+  Fintech: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/20",
 };
 
 function Tag({ name }) {

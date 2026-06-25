@@ -104,6 +104,33 @@ const projects = [
     urlGithub: "https://github.com/muhamadwindy/restologi",
   },
   {
+    slug: "saham-screener",
+    title: "IDX Stock Screener",
+    subtitle: "Fintech · Stock Analysis Dashboard",
+    description:
+      "A full-stack stock screening application for the Indonesian Stock Exchange (IDX), targeting syariah-compliant non-bank equities. The system scores each stock across three dimensions — fundamental health, technical momentum, and broker flow (institutional accumulation detection) — then ranks them by composite score on a live dashboard.",
+    longDescription:
+      "Built end-to-end in under two weeks, this project brings together a Python ETL pipeline (GitHub Actions, daily cron), a Neon PostgreSQL database managed by Drizzle ORM, and a Next.js 14 App Router dashboard. Fundamental data is fetched quarterly from Yahoo Finance (yfinance) and scored by revenue/EPS YoY growth, gross margin trend, DER, and interest coverage. Technical indicators (RSI, SMA, volume z-score, price action) are computed in pure pandas without third-party TA libraries to maintain Python 3.14 compatibility. Broker flow uses publicly available IDX broker summary data to detect patterns consistent with institutional accumulation. The dashboard features a real-time IHSG chart via TradingView widget, a score-distribution sidebar, and one-click links to Stockbit or TradingView for each stock — all with full light/dark mode support.",
+    image: "/img-saham-screener.png",
+    stack: [
+      "Next.js 14", "TypeScript", "Drizzle ORM", "Neon PostgreSQL",
+      "Python 3.14", "pandas", "yfinance", "GitHub Actions",
+      "Tailwind CSS", "TradingView Widget", "Vercel",
+    ],
+    features: [
+      "Triple-factor scoring: Fundamental (F), Technical (T), Broker Flow (FB) → Composite score",
+      "Automated daily ETL via GitHub Actions: fetch OHLCV → compute indicators → update scores",
+      "Quarterly fundamental data from Yahoo Finance: revenue/EPS YoY, DER, ICR, gross margin",
+      "Broker accumulation detection (Bandar flow) from IDX public broker summary data",
+      "Full-screen 2-column dashboard: ranked stock table + score distribution sidebar",
+      "IHSG real-time chart via TradingView with light/dark theme sync",
+      "One-click Stockbit & TradingView links per stock row",
+      "Light/dark mode toggle with localStorage persistence and no flash on reload",
+    ],
+    urlApp: "https://saham-screener-xi.vercel.app/",
+    urlGithub: "https://github.com/muhamadwindy/saham-screener",
+  },
+  {
     slug: "musholla-baitul-muttaqin",
     title: "Musholla Baitul Muttaqin",
     subtitle: "Mosque Profile Website",
