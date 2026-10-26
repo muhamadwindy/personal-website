@@ -128,6 +128,10 @@ export default function PortfolioDetailContent({ project }) {
                   className="btn-outline w-full justify-center text-sm">
                   {t.viewGithub}
                 </a>
+              ) : project.repoOnRequest ? (
+                <Link href="/contact" className="btn-outline w-full justify-center text-sm">
+                  {t.requestRepo}
+                </Link>
               ) : (
                 <button
                   disabled
@@ -135,6 +139,9 @@ export default function PortfolioDetailContent({ project }) {
                   {t.privateRepo}
                 </button>
               )}
+              {project.repoOnRequest && !project.urlGithub ? (
+                <p className="text-xs text-gray-500 dark:text-gray-400">{t.requestRepoNote}</p>
+              ) : null}
             </div>
           </div>
         </div>

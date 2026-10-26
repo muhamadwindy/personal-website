@@ -89,6 +89,20 @@ const projects = [
     urlApp: "https://musholla-baitul-muttaqin.vercel.app/",
     urlGithub: "",
   },
+  {
+    slug: "grc-plus",
+    num: "08",
+    title: "GRC plus",
+    subtitle: "Integrated Risk Review Workflow",
+    category: "Enterprise",
+    description:
+      "Full-stack risk review platform for a regulated institution: 1st Line self-assessment, 2nd Line validation with side-by-side comparison, auto-signed official memos (Nota Dinas) with QR verification, and follow-up monitoring — every step on an audited approval chain.",
+    image: "/img-grc-plus.png",
+    stack: ["Next.js 16", "TypeScript", "Prisma 7", "PostgreSQL (Neon)", "TipTap", "React PDF"],
+    urlApp: "https://grc-plus.vercel.app/",
+    urlGithub: "",
+    repoOnRequest: true,
+  },
 ];
 
 const categoryStyle = {

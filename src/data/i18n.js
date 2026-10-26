@@ -97,7 +97,7 @@ const i18n = {
       hireMe: "Hire Me",
       getInTouch: "Get in Touch",
       stats: [
-        { val: "7", label: "Projects" },
+        { val: "8", label: "Projects" },
         { val: "4", label: "Industries" },
         { val: "10+", label: "Years" },
       ],
@@ -112,6 +112,8 @@ const i18n = {
       viewGithub: "View on GitHub",
       privateApp: "Private — Not Public",
       privateRepo: "Private Repository",
+      requestRepo: "Request Source Code",
+      requestRepoNote: "The repository is private. Contact me to get access to the source code.",
     },
     blog: {
       tag: "Blog",
@@ -249,7 +251,7 @@ const i18n = {
       hireMe: "Hubungi Saya",
       getInTouch: "Hubungi",
       stats: [
-        { val: "7", label: "Proyek" },
+        { val: "8", label: "Proyek" },
         { val: "4", label: "Industri" },
         { val: "10+", label: "Tahun" },
       ],
@@ -264,6 +266,8 @@ const i18n = {
       viewGithub: "Lihat di GitHub",
       privateApp: "Privat — Tidak Publik",
       privateRepo: "Repositori Privat",
+      requestRepo: "Minta Akses Kode Sumber",
+      requestRepoNote: "Repositori bersifat privat. Hubungi saya untuk mendapatkan akses kode sumber.",
     },
     blog: {
       tag: "Blog",

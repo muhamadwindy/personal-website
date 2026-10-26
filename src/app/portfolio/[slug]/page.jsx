@@ -149,6 +149,32 @@ const projects = [
     urlApp: "https://musholla-baitul-muttaqin.vercel.app/",
     urlGithub: "",
   },
+  {
+    slug: "grc-plus",
+    title: "GRC plus",
+    subtitle: "Integrated Risk Review Workflow",
+    description:
+      "A full-stack governance, risk & compliance platform that takes a business activity from 1st Line risk self-assessment, through 2nd Line validation, to signed official memos and follow-up monitoring — all on an audited, role-based approval chain.",
+    longDescription:
+      "GRC plus digitizes the risk review process of a regulated institution end to end. A unit's staff picks an activity template, assesses each risk's inherent level and control effectiveness (KPMR), and the system computes net risk, a composite score, and a recommendation with integer-exact arithmetic. The submission then climbs the 1st Line approval chain; activities above the director-group limit continue to the 2nd Line, where it is dispositioned to a reviewer who validates every risk against a side-by-side 1st vs 2nd Line comparison grid. Official memos (Nota Dinas) are written in a page-accurate TipTap editor on an A4 canvas, receive temporary then final numbers, are signed automatically when the director approves, and render to PDF with a QR code that resolves to a public verification page. Reports (Executive Summary) are generated as PDFs from the same data the screens use. Every change is protected by row locks and optimistic versioning, recorded in workflow history and an audit log, and pushed to users as in-app notifications and a unified task inbox. Built with Next.js 16 App Router, Prisma 7 on Neon PostgreSQL, Argon2id authentication with idle/absolute session limits, and a light/dark design system.",
+    image: "/img-grc-plus.png",
+    stack: [
+      "Next.js 16", "React 19", "TypeScript", "Prisma 7", "Neon PostgreSQL",
+      "NextAuth", "Argon2id", "TipTap", "React PDF", "Zod", "Tailwind CSS 4", "Vitest", "Playwright",
+    ],
+    features: [
+      "Risk self-assessment with automatic inherent, KPMR, net risk & composite scoring",
+      "Multi-level approval chains for 1st Line, disposition and 2nd Line validation, with revise & reassign",
+      "Side-by-side 1st vs 2nd Line comparison grid that highlights every changed value",
+      "Nota Dinas editor on an A4 canvas with auto-numbering, automatic signing & QR verification",
+      "PDF reports (Executive Summary) and memos generated server-side from live data",
+      "Unified task inbox, in-app notifications, working-day SLA tracking and full workflow history",
+      "Row locking + optimistic versioning so concurrent reviewers never overwrite each other",
+    ],
+    urlApp: "https://grc-plus.vercel.app/",
+    urlGithub: "",
+    repoOnRequest: true,
+  },
 ];
 
 export async function generateStaticParams() {
