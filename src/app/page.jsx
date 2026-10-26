@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import fotowindy from "../assets/image/fotowindy.png";
 import TypewriterRole from "@/components/TypewriterRole";
+import FlagshipProjects from "@/components/FlagshipProjects";
 import { useLanguage } from "@/components/LanguageProvider";
 import i18n from "@/data/i18n";
 
@@ -285,6 +286,13 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── Flagship projects: LOS & GRC plus ── */}
+      <div className="py-20 border-t border-gray-200 dark:border-white/5">
+        <div className="px-5 sm:px-8 lg:px-12">
+          <FlagshipProjects />
+        </div>
+      </div>
 
       {/* ── Stats strip ── */}
       <div className="border-t border-gray-200 dark:border-white/5">

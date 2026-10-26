@@ -3,34 +3,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
 import i18n from "@/data/i18n";
+import FlagshipProjects from "@/components/FlagshipProjects";
 
-const featured = {
-  slug: "LOS",
-  num: "01",
-  title: "Loan Origination System",
-  subtitle: "Enterprise Financial Application",
-  category: "Enterprise",
-  description: "Enterprise-grade web application for financial and banking companies, handling the complete loan origination workflow — from application intake through multi-stage underwriting, approval, and disbursement — with role-based access control and compliance audit trails.",
-  image: "/img-los.png",
-  stack: ["React.js", "Node.js", "SQL Server", "REST API"],
-};
-
+// LOS & GRC plus tampil di <FlagshipProjects />; grid ini berisi proyek lainnya.
 const projects = [
   {
     slug: "admin-app",
-    num: "02",
-    title: "Admin Application",
-    subtitle: "Dashboard Management",
+    num: "03",
+    title: "CoreAccess",
+    subtitle: "Banking Identity & Access Management",
     category: "Enterprise",
-    description: "Admin dashboard with user management, role-based access control, activity logging, and real-time analytics for system administrators.",
+    description: "Full-stack employee identity & access management console, modeled as a banking case study — every account change requires maker–checker approval, guarded by OTP step-up login and a compliance-grade, append-only audit trail.",
     image: "/img-admin-app.png",
-    stack: ["React.js", "Tailwind CSS", "Node.js"],
-    urlApp: "https://muhamadwindy.github.io/admin-app/",
-    urlGithub: "https://github.com/muhamadwindy/admin-app",
+    stack: ["Next.js 14", "TypeScript", "Prisma", "SQLite"],
+    urlApp: "",
+    urlGithub: "",
   },
   {
     slug: "company-profile",
-    num: "03",
+    num: "04",
     title: "Sulistiyo IT Company",
     subtitle: "Company Profile Website",
     category: "Web",
@@ -42,7 +33,7 @@ const projects = [
   },
   {
     slug: "news-portal",
-    num: "04",
+    num: "05",
     title: "Sulistiyo News",
     subtitle: "News Portal Website",
     category: "Web",
@@ -54,7 +45,7 @@ const projects = [
   },
   {
     slug: "restologi",
-    num: "05",
+    num: "06",
     title: "Restaurant Catalog",
     subtitle: "Progressive Web App",
     category: "PWA",
@@ -66,7 +57,7 @@ const projects = [
   },
   {
     slug: "saham-screener",
-    num: "06",
+    num: "07",
     title: "IDX Stock Screener",
     subtitle: "Fintech · Stock Analysis Dashboard",
     category: "Fintech",
@@ -79,7 +70,7 @@ const projects = [
   },
   {
     slug: "musholla-baitul-muttaqin",
-    num: "07",
+    num: "08",
     title: "Musholla Baitul Muttaqin",
     subtitle: "Mosque Profile Website",
     category: "Web",
@@ -88,20 +79,6 @@ const projects = [
     stack: ["Next.js", "Tailwind CSS"],
     urlApp: "https://musholla-baitul-muttaqin.vercel.app/",
     urlGithub: "",
-  },
-  {
-    slug: "grc-plus",
-    num: "08",
-    title: "GRC plus",
-    subtitle: "Integrated Risk Review Workflow",
-    category: "Enterprise",
-    description:
-      "Full-stack risk review platform for a regulated institution: 1st Line self-assessment, 2nd Line validation with side-by-side comparison, auto-signed official memos (Nota Dinas) with QR verification, and follow-up monitoring — every step on an audited approval chain.",
-    image: "/img-grc-plus.png",
-    stack: ["Next.js 16", "TypeScript", "Prisma 7", "PostgreSQL (Neon)", "TipTap", "React PDF"],
-    urlApp: "https://grc-plus.vercel.app/",
-    urlGithub: "",
-    repoOnRequest: true,
   },
 ];
 
@@ -161,70 +138,13 @@ export default function PortfolioContent() {
           </div>
         </div>
 
-        {/* Featured Project */}
-        <div className="glass-card rounded-3xl overflow-hidden group hover:border-violet-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/8 mb-5">
-          <div className="flex flex-col lg:flex-row">
-            <div className="relative lg:w-[55%] h-64 sm:h-80 lg:h-auto min-h-[280px] overflow-hidden">
-              <Image
-                src={featured.image}
-                alt={featured.title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/50" />
-              <div className="absolute top-4 left-4 flex items-center gap-2">
-                <span className="flex items-center gap-1.5 bg-violet-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  {t.featured}
-                </span>
-                <span className="bg-black/40 backdrop-blur-sm text-white text-xs font-mono px-2.5 py-1.5 rounded-full border border-white/15">
-                  {featured.num}
-                </span>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 lg:hidden">
-                <h2 className="text-xl font-bold text-white">{featured.title}</h2>
-              </div>
-            </div>
-            <div className="lg:w-[45%] p-7 sm:p-10 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-5">
-                  <CategoryBadge cat={featured.category} />
-                  <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-white/10">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                      <path d="M7 11V7a5 5 0 0110 0v4" />
-                    </svg>
-                    {t.confidential}
-                  </span>
-                </div>
-                <h2 className="hidden lg:block text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white mb-1.5 leading-snug">
-                  {featured.title}
-                </h2>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">{featured.subtitle}</p>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 text-sm sm:text-base">{featured.description}</p>
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {featured.stack.map((s) => <Tag key={s} name={s} />)}
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Link href={`/portfolio/${featured.slug}`} className="btn-primary text-sm">
-                  {t.viewDetails}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
-                <span className="text-xs text-gray-400 dark:text-gray-500 italic">{t.privateProject}</span>
-              </div>
-            </div>
-          </div>
+        {/* Flagship: LOS & GRC plus */}
+        <div className="mb-14">
+          <FlagshipProjects withHeading={false} priority />
         </div>
 
         {/* Project Grid */}
-        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
           {projects.map((project) => (
             <div
               key={project.slug}
