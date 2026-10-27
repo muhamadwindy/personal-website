@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Muhamad Windy Sulistiyo | Full Stack Developer",
   description:
-    "Personal portfolio of Muhamad Windy Sulistiyo — Full Stack Developer with 10+ years experience in .NET (C#) and Next.js. Based in Semarang, Indonesia.",
+    "Personal portfolio of Muhamad Windy Sulistiyo, Full Stack Developer with 10+ years experience in .NET (C#) and Next.js. Based in Semarang, Indonesia.",
 };
 
 export default function RootLayout({ children }) {

@@ -40,7 +40,7 @@ export default function HomePage() {
 
               {/* Greeting */}
               <p className="font-mono text-sm text-gray-500 mb-3">
-                <span className="text-violet-600 dark:text-violet-400">{">"}</span> {lang === "en" ? "Hello World! 👋" : "Halo Dunia! 👋"}
+                <span className="text-violet-600 dark:text-violet-400">{">"}</span> {lang === "en" ? "Hello World!" : "Halo Dunia!"}
               </p>
 
               {/* Name — responsive, no overflow on mobile */}
@@ -159,7 +159,7 @@ export default function HomePage() {
                     <div className="text-[10px] text-gray-500 dark:text-gray-500 mt-0.5">{t.enterpriseGrade}</div>
                   </div>
                   <div className="glass-card rounded-2xl p-4">
-                    <div className="text-2xl font-extrabold gradient-text leading-none">20+</div>
+                    <div className="text-2xl font-extrabold gradient-text leading-none">8</div>
                     <div className="text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-wide leading-tight mt-0.5">{t.projectsLabel}</div>
                     <div className="text-[11px] text-gray-500 dark:text-gray-400 uppercase tracking-wide">{t.delivered}</div>
                     <div className="mt-3 flex items-center gap-1.5">
@@ -192,98 +192,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* ── Code card + AI card — 2 column ── */}
-          <div className="mt-20 grid md:grid-cols-2 gap-5 items-stretch">
-
-            {/* developer.js */}
-            <div className="glass-card rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-black/20">
-                <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400/80" />
-                <div className="w-3 h-3 rounded-full bg-green-400/80" />
-                <span className="ml-2 text-xs text-gray-500 font-mono">developer.js</span>
-              </div>
-              <pre className="px-5 py-4 text-xs font-mono leading-relaxed overflow-x-auto">
-                <code>
-                  <span className="text-violet-600 dark:text-violet-400">const </span>
-                  <span className="text-cyan-700 dark:text-cyan-300">developer</span>
-                  <span className="text-gray-800 dark:text-white"> {"= {"}</span>{"\n"}
-                  {"  "}<span className="text-blue-600 dark:text-blue-300">name</span><span className="text-gray-800 dark:text-white">: </span><span className="text-emerald-600 dark:text-emerald-300">&quot;Muhamad Windy&quot;</span><span className="text-gray-500">,</span>{"\n"}
-                  {"  "}<span className="text-blue-600 dark:text-blue-300">role</span><span className="text-gray-800 dark:text-white">: </span><span className="text-emerald-600 dark:text-emerald-300">&quot;Full Stack Developer&quot;</span><span className="text-gray-500">,</span>{"\n"}
-                  {"  "}<span className="text-blue-600 dark:text-blue-300">stack</span><span className="text-gray-800 dark:text-white">: [</span><span className="text-emerald-600 dark:text-emerald-300">&quot;.NET&quot;</span><span className="text-gray-800 dark:text-white">, </span><span className="text-emerald-600 dark:text-emerald-300">&quot;Next.js&quot;</span><span className="text-gray-800 dark:text-white">, </span><span className="text-emerald-600 dark:text-emerald-300">&quot;C#&quot;</span><span className="text-gray-800 dark:text-white">],</span>{"\n"}
-                  {"  "}<span className="text-blue-600 dark:text-blue-300">experience</span><span className="text-gray-800 dark:text-white">: </span><span className="text-orange-600 dark:text-orange-400">10</span><span className="text-gray-500">,</span>{"\n"}
-                  {"  "}<span className="text-blue-600 dark:text-blue-300">available</span><span className="text-gray-800 dark:text-white">: </span><span className="text-orange-600 dark:text-orange-400">true</span>{"\n"}
-                  <span className="text-gray-800 dark:text-white">{"}"}</span>{"\n"}
-                  {"\n"}
-                  <span className="text-gray-500">{"// ready to build something great? 🚀"}</span>
-                </code>
-              </pre>
-            </div>
-
-            {/* AI-powered card */}
-            <div className="glass-card rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-black/20">
-                <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400/80" />
-                <div className="w-3 h-3 rounded-full bg-green-400/80" />
-                <span className="ml-2 text-xs text-gray-500 font-mono">ai-assistant.sh</span>
-                <span className="ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-500/15 text-violet-600 dark:text-violet-400 border border-violet-500/20">
-                  ⚡ {t.services.ai.badge}
-                </span>
-              </div>
-              <div className="px-5 py-4 text-xs font-mono leading-relaxed space-y-2">
-                <div className="text-gray-500 dark:text-gray-500">
-                  {"# develop sistem lebih cepat dengan AI"}
-                </div>
-                <div className="mt-2">
-                  <span className="text-violet-600 dark:text-violet-400">$ </span>
-                  <span className="text-gray-800 dark:text-white">copilot generate </span>
-                  <span className="text-emerald-600 dark:text-emerald-300">&quot;.NET API endpoint&quot;</span>
-                </div>
-                <div className="flex items-center gap-2 pl-3">
-                  <span className="text-emerald-500">✓</span>
-                  <span className="text-gray-600 dark:text-gray-400">Controller + Service generated</span>
-                  <span className="text-gray-400 ml-auto">1.2s</span>
-                </div>
-                <div className="mt-1">
-                  <span className="text-violet-600 dark:text-violet-400">$ </span>
-                  <span className="text-gray-800 dark:text-white">claude </span>
-                  <span className="text-emerald-600 dark:text-emerald-300">&quot;optimize SQL query&quot;</span>
-                </div>
-                <div className="flex items-center gap-2 pl-3">
-                  <span className="text-emerald-500">✓</span>
-                  <span className="text-gray-600 dark:text-gray-400">Query 3x faster — index added</span>
-                  <span className="text-gray-400 ml-auto">0.8s</span>
-                </div>
-                <div className="mt-1">
-                  <span className="text-violet-600 dark:text-violet-400">$ </span>
-                  <span className="text-gray-800 dark:text-white">ai write </span>
-                  <span className="text-emerald-600 dark:text-emerald-300">&quot;unit tests&quot;</span>
-                </div>
-                <div className="flex items-center gap-2 pl-3">
-                  <span className="text-emerald-500">✓</span>
-                  <span className="text-gray-600 dark:text-gray-400">14 tests passed</span>
-                  <span className="text-emerald-500 ml-auto">100%</span>
-                </div>
-                <div className="mt-3 pt-3 border-t border-gray-200 dark:border-white/5">
-                  <div className="text-gray-500 mb-2">tools:</div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {["GitHub Copilot", "Claude AI", "ChatGPT", "Cursor"].map((tool) => (
-                      <span key={tool} className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-violet-500/10 text-violet-700 dark:text-violet-400 border border-violet-500/20">
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-2 text-gray-500 dark:text-gray-500">
-                  {"// "}
-                  <span className="text-cyan-600 dark:text-cyan-400">3x faster delivery</span>
-                  {" with AI assistance 🚀"}
-                </div>
-              </div>
-            </div>
-
-          </div>
         </div>
       </section>
 
