@@ -50,7 +50,7 @@ export default function Navbar() {
 
           {/* ── Left: MW logo + brand ── */}
           <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-violet-500/25 group-hover:shadow-violet-500/40 transition-shadow duration-200">
+            <div className="w-9 h-9 rounded-lg bg-violet-700 flex items-center justify-center text-white font-bold text-sm">
               MW
             </div>
             <span className="font-semibold text-gray-900 dark:text-white text-[15px] hidden sm:block tracking-tight">

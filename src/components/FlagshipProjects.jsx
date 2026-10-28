@@ -3,19 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
 
+const serifStyle = { fontFamily: "var(--font-serif), Georgia, serif" };
+
 const copy = {
   en: {
-    tag: "Flagship Work",
-    title: "Two systems I am",
-    highlight: "most proud of",
-    lead: "Enterprise applications built for regulated financial institutions, where every approval, number, and document must hold up to an audit.",
+    tag: "Flagship work",
     flagship: "Flagship",
-    details: "View case study",
-    live: "Open live demo",
-    confidential: "Confidential, internal enterprise system",
+    title: "Two systems built for regulated finance",
+    lead: "Enterprise applications for financial institutions, where every approval, number, and document has to stand up to an audit.",
+    built: "What it does",
+    stack: "Built with",
+    details: "Read the case study",
+    live: "Open the live demo",
+    liveNote: "opens grc-plus.vercel.app",
+    confidential: "Internal enterprise system. Screens shown with client data hidden.",
     projects: {
       LOS: {
-        pitch: "End-to-end loan lifecycle for banking and financing companies.",
+        pitch: "The full loan lifecycle for banks and financing companies.",
         points: [
           "Application intake through underwriting, approval, and disbursement",
           "Multi-stage approval workflow with role-based access per department",
@@ -23,27 +27,29 @@ const copy = {
         ],
       },
       "grc-plus": {
-        pitch: "Risk review platform from 1st Line self-assessment to signed official memos.",
+        pitch: "Risk review from 1st Line self-assessment to a signed official memo.",
         points: [
           "Automatic inherent, KPMR, net risk and composite scoring",
           "1st vs 2nd Line comparison that flags every value the validator changed",
-          "Auto-numbered, auto-signed memos with QR verification and live monitoring dashboard",
+          "Auto-numbered, auto-signed memos with QR verification and a monitoring dashboard",
         ],
       },
     },
   },
   id: {
-    tag: "Karya Unggulan",
-    title: "Dua sistem yang paling",
-    highlight: "saya banggakan",
-    lead: "Aplikasi enterprise untuk lembaga keuangan yang diawasi regulator, di mana setiap persetujuan, angka, dan dokumen harus lolos audit.",
+    tag: "Karya unggulan",
     flagship: "Unggulan",
-    details: "Lihat studi kasus",
+    title: "Dua sistem untuk industri keuangan yang diawasi regulator",
+    lead: "Aplikasi enterprise untuk lembaga keuangan, di mana setiap persetujuan, angka, dan dokumen harus lolos audit.",
+    built: "Fungsinya",
+    stack: "Dibangun dengan",
+    details: "Baca studi kasus",
     live: "Buka demo langsung",
-    confidential: "Rahasia, sistem internal enterprise",
+    liveNote: "membuka grc-plus.vercel.app",
+    confidential: "Sistem internal enterprise. Data klien pada tampilan disamarkan.",
     projects: {
       LOS: {
-        pitch: "Siklus kredit menyeluruh untuk perbankan dan perusahaan pembiayaan.",
+        pitch: "Siklus kredit lengkap untuk bank dan perusahaan pembiayaan.",
         points: [
           "Dari pengajuan, analisis kredit, persetujuan, sampai pencairan",
           "Alur persetujuan bertingkat dengan hak akses per divisi",
@@ -51,7 +57,7 @@ const copy = {
         ],
       },
       "grc-plus": {
-        pitch: "Platform review risiko dari self-assessment 1st Line sampai Nota Dinas bertanda tangan.",
+        pitch: "Review risiko dari self-assessment 1st Line sampai Nota Dinas bertanda tangan.",
         points: [
           "Skor risiko inheren, KPMR, net risk, dan komposit dihitung otomatis",
           "Perbandingan 1st vs 2nd Line yang menandai setiap nilai yang diubah validator",
@@ -64,100 +70,138 @@ const copy = {
 
 const flagships = [
   {
-    slug: "LOS",
-    num: "01",
-    title: "Loan Origination System",
-    image: "/img-los.png",
-    stack: ["React.js", "Node.js", "SQL Server", "REST API"],
-    urlApp: "",
-  },
-  {
     slug: "grc-plus",
-    num: "02",
+    num: "01",
     title: "GRC plus",
     image: "/img-grc-plus.png",
     stack: ["Next.js 16", "TypeScript", "Prisma 7", "PostgreSQL", "Highcharts"],
     urlApp: "https://grc-plus.vercel.app/",
   },
+  {
+    slug: "LOS",
+    num: "02",
+    title: "Loan Origination System",
+    image: "/img-los.png",
+    stack: ["React.js", "Node.js", "SQL Server", "REST API"],
+    urlApp: "",
+  },
 ];
 
-/** Sorotan dua proyek utama; dipakai di Beranda (dengan judul seksi) dan Portofolio. */
-export default function FlagshipProjects({ withHeading = true, priority = false }) {
+// Dua set warna: "light" untuk halaman biasa, "dark" untuk pita ungu tua di Beranda (satu titik fokus per layar).
+const TONES = {
+  light: {
+    tag: "text-violet-700 dark:text-violet-300",
+    heading: "text-gray-900 dark:text-white",
+    body: "text-gray-600 dark:text-gray-300",
+    strong: "text-gray-700 dark:text-gray-200",
+    muted: "text-gray-500 dark:text-gray-400",
+    num: "text-violet-700 dark:text-violet-300",
+    dash: "bg-violet-600 dark:bg-violet-400",
+    rule: "divide-gray-200 dark:divide-white/10 border-gray-200 dark:border-white/10",
+    frame: "border-gray-200 dark:border-white/10 bg-white dark:bg-white/5",
+    button: "btn-primary",
+    link: "text-violet-700 dark:text-violet-300 hover:text-violet-900 dark:hover:text-violet-200",
+  },
+  dark: {
+    tag: "text-violet-200",
+    heading: "text-white",
+    body: "text-violet-100",
+    strong: "text-white",
+    muted: "text-violet-200",
+    num: "text-violet-300",
+    dash: "bg-violet-300",
+    rule: "divide-white/15 border-white/15",
+    frame: "border-white/15 bg-white/5",
+    button:
+      "inline-flex items-center px-6 py-3 rounded-lg bg-white text-violet-900 text-sm font-semibold hover:bg-violet-100 transition-colors",
+    link: "text-white hover:text-violet-200",
+  },
+};
+
+/** Dua proyek utama sebagai baris lebar bergantian; dipakai di Beranda (dengan judul) dan Portofolio. */
+export default function FlagshipProjects({ withHeading = true, priority = false, tone = "light" }) {
   const { lang } = useLanguage();
   const t = copy[lang] ?? copy.en;
+  const k = TONES[tone];
 
   return (
     <section aria-labelledby={withHeading ? "flagship-heading" : undefined}>
       {withHeading && (
-        <div className="mb-10 max-w-2xl">
-          <p className="text-violet-600 dark:text-violet-400 font-medium text-sm mb-2 tracking-wide uppercase">{t.tag}</p>
-          <h2 id="flagship-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">
-            {t.title} <span className="gradient-text">{t.highlight}</span>
+        <header className="mb-14 max-w-3xl">
+          <p className={`text-sm font-semibold mb-3 ${k.tag}`}>{t.tag}</p>
+          <h2 id="flagship-heading" className={`text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 ${k.heading}`}>
+            {t.title}
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{t.lead}</p>
-        </div>
+          <p className={`leading-relaxed text-base sm:text-lg ${k.body}`}>{t.lead}</p>
+        </header>
       )}
 
-      <div className="grid lg:grid-cols-2 gap-6">
-        {flagships.map((p) => {
+      <div className={`divide-y border-y ${k.rule}`}>
+        {flagships.map((p, i) => {
           const c = t.projects[p.slug];
+          const imageRight = i % 2 === 1;
           return (
-            <article
-              key={p.slug}
-              className="relative rounded-3xl p-[1.5px] bg-gradient-to-br from-violet-500/70 via-violet-400/20 to-cyan-400/60 hover:from-violet-500 hover:to-cyan-400 transition-colors duration-500 group">
-              <div className="h-full rounded-[calc(1.5rem-1.5px)] bg-white dark:bg-[#0c1222] overflow-hidden flex flex-col">
-                <Link href={`/portfolio/${p.slug}`} className="relative block aspect-[16/10] overflow-hidden" aria-label={`${t.details}: ${p.title}`}>
+            <article key={p.slug} className="grid lg:grid-cols-12 gap-8 lg:gap-12 py-12 lg:py-16 items-center">
+              <Link
+                href={`/portfolio/${p.slug}`}
+                aria-label={`${t.details}: ${p.title}`}
+                className={`lg:col-span-7 block rounded-lg overflow-hidden border ${k.frame} ${imageRight ? "lg:order-2" : ""}`}>
+                <div className="relative aspect-[16/10]">
                   <Image
                     src={p.image}
                     alt={p.title}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    className="object-cover object-top"
                     priority={priority}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
                   <div className="absolute top-4 left-4 flex items-center gap-2">
                     <span className="bg-violet-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">{t.flagship}</span>
-                    <span className="bg-black/40 backdrop-blur-sm text-white text-xs font-mono px-2.5 py-1.5 rounded-full border border-white/15">
+                    <span className="bg-black/50 text-white text-xs font-mono px-2.5 py-1.5 rounded-full border border-white/15">
                       {p.num}
                     </span>
                   </div>
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">{p.title}</h3>
-                    <p className="text-sm text-white/85 mt-1">{c.pitch}</p>
-                  </div>
-                </Link>
+                </div>
+              </Link>
 
-                <div className="p-6 sm:p-7 flex flex-col flex-grow">
-                  <ul className="space-y-2.5 mb-6">
-                    {c.points.map((pt) => (
-                      <li key={pt} className="flex gap-2.5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                        <svg className="mt-1 flex-shrink-0 text-violet-600 dark:text-violet-400" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M20 6L9 17l-5-5" />
-                        </svg>
-                        {pt}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {p.stack.map((s) => (
-                      <span key={s} className="px-2.5 py-1 rounded-md text-xs font-medium bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/10">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-auto flex flex-wrap items-center gap-3">
-                    <Link href={`/portfolio/${p.slug}`} className="btn-primary text-sm">
-                      {t.details}
-                    </Link>
-                    {p.urlApp ? (
-                      <a href={p.urlApp} target="_blank" rel="noreferrer" className="btn-outline text-sm">
-                        {t.live} ↗
-                      </a>
-                    ) : (
-                      <span className="text-xs text-gray-500 dark:text-gray-400 italic">{t.confidential}</span>
-                    )}
-                  </div>
+              <div className={`lg:col-span-5 ${imageRight ? "lg:order-1" : ""}`}>
+                <p style={serifStyle} className={`text-6xl font-bold leading-none mb-4 ${k.num}`} aria-hidden="true">
+                  {p.num}
+                </p>
+                <h3 className={`text-2xl sm:text-3xl font-bold leading-snug mb-2 ${k.heading}`}>{p.title}</h3>
+                <p className={`leading-relaxed mb-6 ${k.body}`}>{c.pitch}</p>
+
+                <h4 className={`text-xs font-semibold mb-2 ${k.muted}`}>{t.built}</h4>
+                <ul className="space-y-2 mb-6">
+                  {c.points.map((pt) => (
+                    <li key={pt} className={`flex gap-3 text-sm leading-relaxed ${k.strong}`}>
+                      <span className={`mt-2 h-px w-3 flex-shrink-0 ${k.dash}`} aria-hidden="true" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className={`text-sm mb-8 ${k.body}`}>
+                  <span className={`text-xs font-semibold mr-2 ${k.muted}`}>{t.stack}</span>
+                  {p.stack.join(" · ")}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <Link href={`/portfolio/${p.slug}`} className={`${k.button} text-sm`}>
+                    {t.details}
+                  </Link>
+                  {p.urlApp ? (
+                    <a
+                      href={p.urlApp}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`text-sm font-semibold underline underline-offset-4 ${k.link}`}>
+                      {t.live}
+                      <span className="sr-only"> ({t.liveNote})</span>
+                    </a>
+                  ) : (
+                    <span className={`text-xs max-w-xs ${k.muted}`}>{t.confidential}</span>
+                  )}
                 </div>
               </div>
             </article>

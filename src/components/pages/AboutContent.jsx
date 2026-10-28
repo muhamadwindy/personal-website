@@ -6,7 +6,6 @@ import i18n from "@/data/i18n";
 
 const socials = [
   { name: "GitHub", url: "https://github.com/muhamadwindy", iconType: "github" },
-  { name: "Instagram", url: "https://www.instagram.com/mwsulistiyo", iconType: "instagram" },
   { name: "LinkedIn", url: "https://www.linkedin.com/in/muhamad-windy-sulistiyo-505653120", iconType: "linkedin" },
 ];
 
@@ -35,34 +34,32 @@ function SocialIcon({ type }) {
   );
 }
 
+// Ikon hobi, urutan sama dengan i18n about.interests: sepeda, pesawat, pena.
+const INTEREST_ICONS = [
+  "M5 17a3 3 0 100-6 3 3 0 000 6zM19 17a3 3 0 100-6 3 3 0 000 6zM5 14l4-7h5l3 7M9 7l3 7h7",
+  "M2 16l20-6-20-6 3 6-3 6zM5 10h7",
+  "M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4 12.5-12.5z",
+];
+
 export default function AboutContent() {
   const { lang } = useLanguage();
   const t = i18n[lang].about;
 
   return (
     <div className="relative pt-28 pb-20">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-400/8 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 dot-grid pointer-events-none opacity-50" />
-
       <div className="relative px-5 sm:px-8 lg:px-12">
-        <div className="mb-14">
-          <p className="text-violet-600 dark:text-violet-400 font-medium text-sm mb-2 tracking-wide uppercase">
-            {t.tag}
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">
-            {t.title}{" "}
-            <span className="gradient-text">{t.highlight}</span>
-          </h1>
-        </div>
-
-        <div className="grid lg:grid-cols-5 gap-16 items-start">
-          <div className="lg:col-span-3 space-y-6">
-            <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed text-[15px]">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-20">
+          <div className="lg:col-span-7">
+            <p className="text-sm font-semibold text-violet-700 dark:text-violet-300 mb-3">{t.tag}</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-8">
+              {t.title} <span className="gradient-text">{t.highlight}</span>
+            </h1>
+            <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed text-base sm:text-[17px]">
               <p>
                 {t.bio1Start}{" "}
                 <span className="text-gray-900 dark:text-white font-semibold">{t.bio1Name}</span>
                 {t.bio1End}{" "}
-                <span className="text-cyan-600 dark:text-cyan-400 font-medium">{t.bio1City}</span>{" "}
+                <span className="font-semibold text-gray-900 dark:text-white">{t.bio1City}</span>{" "}
                 {t.bio1Rest}
               </p>
               <p className="text-gray-600 dark:text-gray-300">
@@ -76,47 +73,96 @@ export default function AboutContent() {
                 <span className="text-violet-700 dark:text-violet-400 font-medium">Node.js</span>
                 {t.bio2.split("Node.js")[1]}
               </p>
-              <p>{t.bio3}</p>
-              <ul className="space-y-2 mt-2">
-                {t.interests.map((item) => (
-                  <li key={item} className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-violet-500 flex-shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="glass-card rounded-2xl p-6 mt-6">
-              <p className="text-sm font-semibold text-violet-600 dark:text-violet-400 mb-5 tracking-wide uppercase">
-                {t.findMeOn}
-              </p>
-              <div className="flex gap-3">
-                {socials.map((s) => (
-                  <a
-                    key={s.name}
-                    href={s.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-all duration-200 group flex-1">
-                    <span className="text-gray-500 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                      <SocialIcon type={s.iconType} />
-                    </span>
-                    <span className="text-xs text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors font-medium">
-                      {s.name}
-                    </span>
-                  </a>
-                ))}
-              </div>
             </div>
           </div>
 
-          <div className="lg:col-span-2 relative">
-            <div className="absolute -inset-4 bg-gradient-to-br from-violet-500/15 to-cyan-400/10 rounded-3xl blur-2xl" />
-            <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/8">
-              <Image src={imgAbout} alt="About illustration" className="w-full" sizes="(max-width: 1024px) 100vw, 40vw" loading="lazy" />
+          {/* Gambar dipertahankan; blok ungu tua di belakangnya sebagai aksen, plus dua label fakta yang menempel. */}
+          <div className="lg:col-span-5 relative">
+            <div className="absolute inset-0 -translate-x-4 translate-y-4 rounded-xl bg-violet-950" aria-hidden="true" />
+            <div className="relative rounded-xl overflow-hidden border border-gray-200 dark:border-white/10">
+              <Image src={imgAbout} alt="About illustration" className="w-full" sizes="(max-width: 1024px) 100vw, 40vw" priority />
+            </div>
+            <div className="absolute -bottom-5 -left-3 sm:-left-6 glass-card rounded-lg px-4 py-3">
+              <div className="text-2xl font-bold text-gray-900 dark:text-white leading-none">10+</div>
+              <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">{t.yearsBadge}</div>
+            </div>
+            <div className="absolute -top-4 right-4 glass-card rounded-lg px-4 py-2 flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-violet-600 dark:text-violet-400" aria-hidden="true">
+                <path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+              <span className="text-xs font-semibold text-gray-700 dark:text-gray-200">{t.bio1City}</span>
             </div>
           </div>
+        </div>
+
+        {/* Dua peran */}
+        <section className="mb-20">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+            {t.rolesTitle} <span className="gradient-text">{t.rolesHighlight}</span>
+          </h2>
+          <div className="grid md:grid-cols-2 gap-5">
+            {t.roles.map((r, i) => {
+              // Peran konsultan (pertama) adalah peran utama: blok ungu tua; peran developer kartu biasa.
+              const main = i === 0;
+              return (
+              <article key={r.title} className={`rounded-lg overflow-hidden ${main ? "bg-violet-950" : "glass-card"}`}>
+                <div className="p-7 sm:p-8">
+                  <p className={`text-xs font-semibold mb-2 ${main ? "text-violet-200" : "text-violet-700 dark:text-violet-300"}`}>{r.tag}</p>
+                  <h3 className={`text-2xl font-bold mb-3 ${main ? "text-white" : "text-gray-900 dark:text-white"}`}>{r.title}</h3>
+                  <p className={`text-sm leading-relaxed mb-5 ${main ? "text-violet-100" : "text-gray-600 dark:text-gray-300"}`}>{r.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {r.items.map((it) => (
+                      <span
+                        key={it}
+                        className={main ? "text-xs font-medium text-white border border-white/20 rounded-md px-3 py-1.5" : "skill-tag"}>
+                        {it}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Hobi + media sosial */}
+        <div className="grid lg:grid-cols-2 gap-5">
+          <section className="glass-card rounded-lg p-7">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-5">{t.bio3}</h2>
+            <div className="grid grid-cols-3 gap-3">
+              {t.interests.map((item, i) => (
+                <div key={item} className="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 dark:border-white/10 text-center">
+                  <span className="w-10 h-10 rounded-lg bg-violet-700 flex items-center justify-center text-white">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d={INTEREST_ICONS[i]} />
+                    </svg>
+                  </span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{item}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="glass-card rounded-lg p-7">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-5">{t.findMeOn}</h2>
+            <div className="grid grid-cols-2 gap-3">
+              {socials.map((s) => (
+                <a
+                  key={s.name}
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex flex-col items-center gap-2 p-4 rounded-lg border border-gray-200 dark:border-white/10 hover:border-violet-600 transition-colors group">
+                  <span className="text-gray-500 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                    <SocialIcon type={s.iconType} />
+                  </span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">{s.name}</span>
+                </a>
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </div>

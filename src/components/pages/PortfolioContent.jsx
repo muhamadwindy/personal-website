@@ -16,8 +16,8 @@ const projects = [
     description: "Full-stack employee identity & access management console, modeled as a banking case study. Every account change requires maker–checker approval, guarded by OTP step-up login and a compliance-grade, append-only audit trail.",
     image: "/img-admin-app.png",
     stack: ["Next.js 14", "TypeScript", "Prisma", "SQLite"],
-    urlApp: "",
-    urlGithub: "",
+    urlApp: "https://muhamadwindy.github.io/admin-app/",
+    urlGithub: "https://github.com/muhamadwindy/admin-app",
   },
   {
     slug: "company-profile",
@@ -82,12 +82,6 @@ const projects = [
   },
 ];
 
-const categoryStyle = {
-  Enterprise: "bg-violet-500/12 text-violet-700 dark:text-violet-300 border-violet-500/25",
-  Web: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/20",
-  PWA: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20",
-  Fintech: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/20",
-};
 
 function Tag({ name }) {
   return (
@@ -97,12 +91,9 @@ function Tag({ name }) {
   );
 }
 
+// Kategori ditulis sebagai teks netral (palet dibatasi ke violet + netral, DESIGN.md).
 function CategoryBadge({ cat }) {
-  return (
-    <span className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${categoryStyle[cat] ?? categoryStyle.Web}`}>
-      {cat}
-    </span>
-  );
+  return <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">{cat}</span>;
 }
 
 export default function PortfolioContent() {
@@ -111,16 +102,12 @@ export default function PortfolioContent() {
 
   return (
     <div className="relative pt-28 pb-24">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-400/8 dark:bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/6 dark:bg-cyan-600/4 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 dot-grid pointer-events-none opacity-40" />
-
       <div className="relative px-5 sm:px-8 lg:px-12">
 
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
-            <p className="text-violet-600 dark:text-violet-400 font-medium text-sm mb-2 tracking-wide uppercase">
+            <p className="text-sm font-semibold text-violet-700 dark:text-violet-300 mb-3">
               {t.tag}
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
@@ -130,9 +117,9 @@ export default function PortfolioContent() {
           </div>
           <div className="flex items-center gap-3 flex-wrap pb-1">
             {t.stats.map((s) => (
-              <div key={s.label} className="flex flex-col items-center px-4 py-2 glass-card rounded-xl">
-                <span className="text-lg font-extrabold gradient-text leading-none">{s.val}</span>
-                <span className="text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">{s.label}</span>
+              <div key={s.label} className="flex flex-col items-center px-4 py-2 glass-card rounded-lg">
+                <span className="text-lg font-bold text-gray-900 dark:text-white leading-none">{s.val}</span>
+                <span className="text-xs text-gray-600 dark:text-gray-400 mt-1">{s.label}</span>
               </div>
             ))}
           </div>
@@ -148,34 +135,23 @@ export default function PortfolioContent() {
           {projects.map((project) => (
             <div
               key={project.slug}
-              className="glass-card rounded-2xl overflow-hidden group hover:border-violet-500/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/8 flex flex-col">
-              <div className="relative h-48 overflow-hidden flex-shrink-0">
+              className="glass-card rounded-lg overflow-hidden flex flex-col">
+              <Link href={`/portfolio/${project.slug}`} className="relative h-48 overflow-hidden flex-shrink-0 block border-b border-gray-200 dark:border-white/10" aria-label={`${t.viewDetails}: ${project.title}`}>
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   loading="lazy"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-600"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  className="object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute inset-0 bg-violet-900/85 dark:bg-violet-950/90 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                  <Link href={`/portfolio/${project.slug}`} className="bg-white text-violet-700 text-xs font-bold px-4 py-2 rounded-xl hover:bg-violet-50 transition-colors shadow-lg">
-                    {t.viewDetails}
-                  </Link>
-                  {project.urlApp && (
-                    <a href={project.urlApp} target="_blank" rel="noreferrer" className="bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-xl hover:bg-white/25 transition-colors border border-white/20">
-                      Live ↗
-                    </a>
-                  )}
-                </div>
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                  <CategoryBadge cat={project.category} />
-                  <span className="text-xs font-bold font-mono text-white/60 bg-black/30 backdrop-blur-sm px-2 py-1 rounded-md">{project.num}</span>
-                </div>
-              </div>
+              </Link>
               <div className="p-5 flex flex-col flex-grow">
-                <h3 className="font-bold text-gray-900 dark:text-white text-sm sm:text-base mb-0.5 group-hover:text-violet-700 dark:group-hover:text-violet-300 transition-colors">
+                <div className="flex items-center justify-between mb-2">
+                  <CategoryBadge cat={project.category} />
+                  <span className="text-xs text-gray-500 dark:text-gray-400">{project.num}</span>
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white text-base mb-0.5">
                   {project.title}
                 </h3>
                 <p className="text-xs text-gray-500 dark:text-gray-500 mb-3">{project.subtitle}</p>
@@ -188,7 +164,7 @@ export default function PortfolioContent() {
                 </div>
                 <div className="flex items-center gap-3 pt-3 border-t border-gray-100 dark:border-white/5">
                   <Link href={`/portfolio/${project.slug}`} className="text-xs font-semibold text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 transition-colors">
-                    Details →
+                    {t.viewDetails}
                   </Link>
                   {project.urlGithub && (
                     <a href={project.urlGithub} target="_blank" rel="noreferrer" className="text-xs text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 transition-colors">
@@ -197,7 +173,7 @@ export default function PortfolioContent() {
                   )}
                   {project.urlApp && (
                     <a href={project.urlApp} target="_blank" rel="noreferrer" className="text-xs text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 transition-colors ml-auto">
-                      Open ↗
+                      Live demo
                     </a>
                   )}
                 </div>
@@ -213,13 +189,9 @@ export default function PortfolioContent() {
             <p className="text-gray-600 dark:text-gray-400 text-sm">{t.openDesc}</p>
           </div>
           <div className="flex gap-3 flex-shrink-0">
-            <a
-              href="https://wa.me/6285640229650?text=Halo%20Muhamad%20Windy,%20Saya%20ingin%20menawari%20anda%20pekerjaan."
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary text-sm whitespace-nowrap">
+            <Link href="/contact" className="btn-primary text-sm whitespace-nowrap">
               {t.hireMe}
-            </a>
+            </Link>
             <Link href="/contact" className="btn-outline text-sm whitespace-nowrap">
               {t.getInTouch}
             </Link>

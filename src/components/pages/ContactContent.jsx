@@ -32,18 +32,16 @@ export default function ContactContent() {
 
   const contactInfo = [
     { label: "Email", value: "muhamadwindy.dev@gmail.com", href: "mailto:muhamadwindy.dev@gmail.com", iconKey: "email" },
-    { label: "WhatsApp", value: "+62 85 640 229 650", href: "https://wa.me/6285640229650?text=Halo%20Muhamad%20Windy,%20Saya%20ingin%20menawari%20anda%20pekerjaan.", iconKey: "phone" },
     { label: t.location, value: "Semarang, Jawa Tengah, Indonesia", href: null, iconKey: "location" },
   ];
 
   return (
     <div className="relative pt-28 pb-20">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-violet-400/10 dark:bg-violet-600/6 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 dot-grid pointer-events-none opacity-40" />
 
       <div className="relative px-5 sm:px-8 lg:px-12">
         <div className="text-center mb-16">
-          <p className="text-violet-600 dark:text-violet-400 font-medium text-sm mb-2 tracking-wide uppercase">
+          <p className="text-sm font-semibold text-violet-700 dark:text-violet-300 mb-3">
             {t.tag}
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -60,7 +58,7 @@ export default function ContactContent() {
                   {icons[info.iconKey]}
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">{info.label}</p>
+                  <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">{info.label}</p>
                   {info.href ? (
                     <a
                       href={info.href}

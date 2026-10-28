@@ -52,10 +52,10 @@ export default function TypewriterRole({ roles: propRoles }) {
 
   return (
     <div className="flex items-center gap-1.5 h-8">
-      <span className="text-xl sm:text-2xl font-medium text-cyan-600 dark:text-cyan-400">
+      <span className="text-lg sm:text-xl font-semibold text-violet-700 dark:text-violet-300">
         {displayed}
       </span>
-      <span className="inline-block w-0.5 h-6 bg-cyan-600 dark:bg-cyan-400 animate-pulse rounded-full" />
+      <span className="inline-block w-0.5 h-6 bg-violet-600 dark:bg-violet-400 animate-pulse rounded-full" />
     </div>
   );
 }

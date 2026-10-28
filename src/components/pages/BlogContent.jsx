@@ -61,17 +61,9 @@ const posts = [
   },
 ];
 
-const tagColors = {
-  JavaScript: "bg-yellow-400/10 text-yellow-700 dark:text-yellow-400 border-yellow-400/25",
-  Algorithms: "bg-violet-500/10 text-violet-700 dark:text-violet-400 border-violet-500/25",
-  Performance: "bg-sky-500/10 text-sky-700 dark:text-sky-400 border-sky-500/25",
-};
-
+// Topik artikel dengan latar putih agar tetap terbaca saat menumpang di atas gambar.
 function TagBadge({ tag }) {
-  const style = tagColors[tag] ?? "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-white/10";
-  return (
-    <span className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${style}`}>{tag}</span>
-  );
+  return <span className="text-xs font-semibold text-gray-800 bg-white px-2 py-0.5 rounded-md">{tag}</span>;
 }
 
 const [featured, ...rest] = posts;
@@ -82,8 +74,6 @@ export default function BlogContent() {
 
   return (
     <div className="relative pt-28 pb-24">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-400/8 dark:bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-400/6 dark:bg-cyan-600/4 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 dot-grid pointer-events-none opacity-40" />
 
       <div className="relative px-5 sm:px-8 lg:px-12">
@@ -91,7 +81,7 @@ export default function BlogContent() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
-            <p className="text-violet-600 dark:text-violet-400 font-medium text-sm mb-2 tracking-wide uppercase">
+            <p className="text-sm font-semibold text-violet-700 dark:text-violet-300 mb-3">
               {t.tag}
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
@@ -111,7 +101,7 @@ export default function BlogContent() {
           <div className="flex items-center gap-3 pb-1">
             <div className="flex flex-col items-center px-5 py-3 glass-card rounded-xl">
               <span className="text-2xl font-extrabold gradient-text leading-none">{posts.length}</span>
-              <span className="text-[10px] text-gray-500 uppercase tracking-wider mt-0.5">{t.articles}</span>
+              <span className="text-xs text-gray-600 dark:text-gray-400 mt-1">{t.articles}</span>
             </div>
           </div>
         </div>
@@ -121,23 +111,20 @@ export default function BlogContent() {
           href={featured.url}
           target="_blank"
           rel="noreferrer"
-          className="glass-card rounded-3xl overflow-hidden group hover:border-violet-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/8 mb-6 flex flex-col lg:flex-row block">
+          className="glass-card rounded-lg overflow-hidden group hover:border-violet-600 transition-colors mb-6 flex flex-col lg:flex-row block">
           <div className="relative lg:w-[52%] h-64 sm:h-80 lg:h-auto min-h-[260px] overflow-hidden flex-shrink-0">
             <Image
               src={featured.image}
               alt={featured.title}
               fill
               sizes="(max-width: 1024px) 100vw, 52vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              className="object-cover"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/40" />
             <div className="absolute top-4 left-4 flex items-center gap-2">
-              <span className="flex items-center gap-1.5 bg-violet-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                Featured
+              <span className="bg-violet-700 text-white text-xs font-semibold px-2.5 py-1 rounded-md">
+                {lang === "id" ? "Pilihan" : "Featured"}
               </span>
             </div>
           </div>
@@ -163,9 +150,6 @@ export default function BlogContent() {
             </div>
             <div className="mt-8 flex items-center gap-2 text-violet-600 dark:text-violet-400 font-semibold text-sm">
               {t.readFull}
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
             </div>
           </div>
         </a>
@@ -178,7 +162,7 @@ export default function BlogContent() {
               href={post.url}
               target="_blank"
               rel="noreferrer"
-              className="glass-card rounded-2xl overflow-hidden group hover:border-violet-500/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/8 flex flex-col block">
+              className="glass-card rounded-lg overflow-hidden group hover:border-violet-600 transition-colors flex flex-col block">
               <div className="relative h-48 overflow-hidden flex-shrink-0">
                 <Image src={post.image} alt={post.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -201,9 +185,6 @@ export default function BlogContent() {
                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2 mb-4">{post.description}</p>
                 <div className="flex items-center gap-1.5 text-violet-600 dark:text-violet-400 text-xs font-semibold pt-3 border-t border-gray-100 dark:border-white/5">
                   {t.readOn}
-                  <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
                 </div>
               </div>
             </a>

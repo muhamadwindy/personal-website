@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { LanguageProvider } from "@/components/LanguageProvider";
 
 const inter = Inter({ subsets: ["latin"] });
+// Serif untuk judul (DESIGN.md); dipakai lewat variabel --font-serif di globals.css.
+const serif = Source_Serif_4({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-serif", display: "swap" });
 
 export const metadata = {
   title: "Muhamad Windy Sulistiyo | Full Stack Developer",
@@ -23,7 +25,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${serif.variable}`}>
         <ThemeProvider>
           <LanguageProvider>
             <div className="min-h-screen flex flex-col">

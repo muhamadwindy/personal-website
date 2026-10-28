@@ -11,7 +11,6 @@ export default function PortfolioDetailContent({ project }) {
 
   return (
     <div className="relative pt-28 pb-20">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-violet-400/8 dark:bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 dot-grid pointer-events-none opacity-40" />
 
       <div className="relative px-5 sm:px-8 lg:px-12">
@@ -39,7 +38,7 @@ export default function PortfolioDetailContent({ project }) {
           </div>
 
           <div className="absolute bottom-0 left-0 right-0 p-8">
-            <span className="text-xs font-medium text-gray-200 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/15 mb-3 inline-block">
+            <span className="text-xs font-medium text-white bg-black/50 px-3 py-1 rounded-md mb-3 inline-block">
               {project.subtitle}
             </span>
             <h1 className="text-3xl sm:text-4xl font-bold text-white">
@@ -52,7 +51,7 @@ export default function PortfolioDetailContent({ project }) {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             <div className="glass-card rounded-2xl p-6">
-              <h2 className="text-sm font-semibold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-4">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                 {t.overview}
               </h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
@@ -64,7 +63,7 @@ export default function PortfolioDetailContent({ project }) {
             </div>
 
             <div className="glass-card rounded-2xl p-6">
-              <h2 className="text-sm font-semibold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-4">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                 {t.keyFeatures}
               </h2>
               <ul className="space-y-3">
@@ -86,7 +85,7 @@ export default function PortfolioDetailContent({ project }) {
           <div className="space-y-5">
             {/* Stack */}
             <div className="glass-card rounded-2xl p-5">
-              <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+              <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4">
                 {t.techStack}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -102,7 +101,7 @@ export default function PortfolioDetailContent({ project }) {
 
             {/* Links */}
             <div className="glass-card rounded-2xl p-5 space-y-3">
-              <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+              <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4">
                 {t.links}
               </h3>
               {project.urlApp ? (

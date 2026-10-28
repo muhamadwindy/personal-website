@@ -16,7 +16,6 @@ const socials = [
   { label: "GitHub", href: "https://github.com/muhamadwindy" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/muhamad-windy-sulistiyo-505653120" },
   { label: "Medium", href: "https://medium.com/@muhamadwindy" },
-  { label: "Instagram", href: "https://www.instagram.com/mwsulistiyo" },
 ];
 
 export default function Footer() {
@@ -31,7 +30,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center font-bold text-white text-xs shadow-lg shadow-violet-500/30">
+              <div className="w-8 h-8 rounded-lg bg-violet-700 flex items-center justify-center font-bold text-white text-xs">
                 MW
               </div>
               <span className="font-semibold text-gray-900 dark:text-white">Muhamad Windy</span>
@@ -41,7 +40,7 @@ export default function Footer() {
 
           {/* Nav Links */}
           <div>
-            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+            <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
               {t.navigation}
             </p>
             <div className="grid grid-cols-2 gap-1.5">
@@ -58,7 +57,7 @@ export default function Footer() {
 
           {/* Social Links */}
           <div>
-            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+            <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
               {t.connect}
             </p>
             <div className="space-y-1.5">
@@ -69,7 +68,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   className="block text-sm text-gray-500 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-                  {s.label} ↗
+                  {s.label}
                 </a>
               ))}
             </div>

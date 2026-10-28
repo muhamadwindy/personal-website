@@ -1,132 +1,225 @@
 "use client";
+import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
 import i18n from "@/data/i18n";
 
+// Proyek portofolio yang benar-benar memakai teknologi tersebut (sumber: data detail proyek).
+const PROJECTS = {
+  LOS: "Loan Origination System",
+  "grc-plus": "GRC plus",
+  "admin-app": "CoreAccess",
+  "saham-screener": "IDX Stock Screener",
+  "musholla-baitul-muttaqin": "Musholla Baitul Muttaqin",
+  "company-profile": "Sulistiyo IT Company",
+  "news-portal": "Sulistiyo News",
+  restologi: "Restaurant Catalog",
+};
+
+const serifStyle = { fontFamily: "var(--font-serif), Georgia, serif" };
+
+const copy = {
+  en: {
+    business: "Business & consulting expertise",
+    businessLead: "The banking domains I advise on and build systems for.",
+    seeProject: "See the project",
+    domains: [
+      { title: "Loan Origination System", desc: "Designing the credit flow end to end: application intake, credit analysis, tiered approval, and disbursement.", project: "LOS" },
+      { title: "SLIK OJK automation & scoring", desc: "Automating SLIK OJK debtor checks and turning the results into credit scores that feed the approval decision." },
+      { title: "GRC & risk review", desc: "Risk self-assessment, 2nd Line validation, official memos, and follow-up monitoring for regulated institutions.", project: "grc-plus" },
+      { title: "Banking operations", desc: "Translating day-to-day banking processes into internal applications with clear roles, approvals, and audit trails." },
+    ],
+    core: "Core technical stack",
+    coreLead: "The two technologies most of my professional work is built on.",
+    usedIn: "Used in",
+    coreItems: [
+      { name: "C# / .NET", use: "APIs, backends, and business logic for enterprise banking applications." },
+      { name: "Next.js", use: "Full-stack web apps, from GRC plus to the IDX Stock Screener.", projects: ["grc-plus", "admin-app", "saham-screener", "musholla-baitul-muttaqin"] },
+    ],
+    other: "Other tools I use",
+  },
+  id: {
+    business: "Keahlian bisnis & konsultan",
+    businessLead: "Domain perbankan yang saya tangani sebagai konsultan sekaligus saya bangun sistemnya.",
+    seeProject: "Lihat proyeknya",
+    domains: [
+      { title: "Loan Origination System", desc: "Merancang alur kredit menyeluruh: pengajuan, analisis kredit, persetujuan berjenjang, sampai pencairan.", project: "LOS" },
+      { title: "Otomasi & scoring SLIK OJK", desc: "Mengotomasi pengecekan debitur di SLIK OJK dan mengolah hasilnya menjadi skor kredit untuk keputusan persetujuan." },
+      { title: "GRC & review risiko", desc: "Self-assessment risiko, validasi 2nd Line, Nota Dinas, dan monitoring tindak lanjut untuk lembaga yang diawasi regulator.", project: "grc-plus" },
+      { title: "Operasional perbankan", desc: "Menerjemahkan proses perbankan sehari-hari menjadi aplikasi internal dengan peran, persetujuan, dan jejak audit yang jelas." },
+    ],
+    core: "Stack teknis utama",
+    coreLead: "Dua teknologi yang menjadi dasar sebagian besar pekerjaan profesional saya.",
+    usedIn: "Dipakai di",
+    coreItems: [
+      { name: "C# / .NET", use: "API, backend, dan logika bisnis untuk aplikasi perbankan enterprise." },
+      { name: "Next.js", use: "Aplikasi web full-stack, dari GRC plus sampai IDX Stock Screener.", projects: ["grc-plus", "admin-app", "saham-screener", "musholla-baitul-muttaqin"] },
+    ],
+    other: "Tools lain yang saya pakai",
+  },
+};
+
+// Hanya teknologi yang dipakai sendiri; "projects" diisi bila tercatat di stack proyek portofolio.
 const sections = [
   {
     key: "Languages & Frameworks",
-    accent: "from-violet-500 to-indigo-500",
     skills: [
-      { name: "C# / .NET", color: "from-purple-500 to-indigo-700", letter: "C#" },
-      { name: "Next.js", color: "from-gray-600 to-gray-800", letter: "Nx" },
-      { name: "ASP.NET Core", color: "from-indigo-400 to-blue-700", letter: "AN" },
-      { name: "JavaScript", color: "from-yellow-400 to-yellow-600", letter: "JS" },
+      { name: "ASP.NET Core" },
+      { name: "React.js", projects: ["LOS"] },
+      { name: "Node.js", projects: ["LOS"] },
+      { name: "TypeScript", projects: ["grc-plus", "admin-app", "saham-screener"] },
+      { name: "JavaScript", projects: ["company-profile", "news-portal", "restologi"] },
+      { name: "Other", note: "Python · SQL · HTML & CSS · Tailwind CSS", projects: ["saham-screener"] },
     ],
   },
   {
-    key: "Databases",
-    accent: "from-sky-400 to-blue-600",
+    key: "Databases & ORM",
     skills: [
-      { name: "SQL Server", color: "from-red-500 to-red-700", letter: "SQL" },
-      { name: "PostgreSQL", color: "from-blue-500 to-indigo-700", letter: "PG" },
-      { name: "MySQL", color: "from-orange-400 to-orange-600", letter: "My" },
-      { name: "Firebase", color: "from-amber-400 to-amber-600", letter: "Fb" },
+      { name: "SQL Server", projects: ["LOS"] },
+      { name: "PostgreSQL", projects: ["grc-plus", "saham-screener"] },
+      { name: "MySQL" },
+      { name: "Firebase" },
+      { name: "Entity Framework Core", note: ".NET ORM" },
+      { name: "Prisma", projects: ["grc-plus", "admin-app"] },
+      { name: "Drizzle ORM", projects: ["saham-screener"] },
     ],
   },
   {
-    key: "Tools & Platforms",
-    accent: "from-cyan-400 to-teal-600",
+    key: "Testing & Quality",
     skills: [
-      { name: "VS Code", color: "from-blue-500 to-indigo-600", letter: "<>" },
-      { name: "Git / GitHub", color: "from-orange-500 to-red-600", letter: "Git" },
-      { name: "Docker", color: "from-blue-400 to-blue-700", letter: "Dk" },
-      { name: "Postman", color: "from-orange-400 to-orange-600", letter: "API" },
+      { name: "Vitest", note: "Unit tests", projects: ["grc-plus"] },
+      { name: "Playwright", note: "End-to-end tests", projects: ["grc-plus"] },
+      { name: "ESLint", note: "Code quality", projects: ["grc-plus"] },
     ],
+  },
+  {
+    key: "DevOps & Platforms",
+    skills: [
+      { name: "Git / GitHub" },
+      { name: "GitLab", note: "Repositories & CI/CD" },
+      { name: "GitHub Actions", note: "CI/CD & scheduled jobs", projects: ["saham-screener"] },
+      { name: "Vercel", projects: ["grc-plus", "saham-screener", "musholla-baitul-muttaqin"] },
+      { name: "Docker" },
+      { name: "Portainer", note: "Container management" },
+    ],
+  },
+  {
+    key: "Tools",
+    skills: [{ name: "Postman" }, { name: "VS Code" }],
   },
   {
     key: "AI Code Assistants",
-    accent: "from-fuchsia-500 to-violet-600",
-    skills: [
-      { name: "GitHub Copilot", color: "from-gray-500 to-gray-800", letter: "GH" },
-      { name: "Claude AI", color: "from-orange-400 to-violet-600", letter: "AI" },
-      { name: "ChatGPT", color: "from-teal-400 to-emerald-600", letter: "GPT" },
-      { name: "Cursor IDE", color: "from-violet-500 to-indigo-700", letter: "Cu" },
-    ],
+    skills: [{ name: "Claude" }, { name: "ChatGPT (GPT)" }],
   },
 ];
 
-function SkillPill({ skill }) {
+function ProjectLinks({ slugs, label, onDark = false }) {
+  if (!slugs?.length) return null;
   return (
-    <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-gray-200 dark:border-white/8 bg-white/70 dark:bg-white/3 hover:border-violet-400/40 dark:hover:border-violet-500/30 hover:bg-violet-50 dark:hover:bg-violet-500/5 transition-all duration-200 group cursor-default">
-      <div className={`w-6 h-6 rounded-md bg-gradient-to-br ${skill.color} flex items-center justify-center text-white font-bold text-[9px] flex-shrink-0 shadow-sm`}>
-        {skill.letter}
-      </div>
-      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors whitespace-nowrap">
-        {skill.name}
-      </span>
-    </div>
+    <p className={`text-xs mt-1 ${onDark ? "text-violet-200" : "text-gray-600 dark:text-gray-400"}`}>
+      {label}{" "}
+      {slugs.map((s, i) => (
+        <span key={s}>
+          {i > 0 && ", "}
+          <Link
+            href={`/portfolio/${s}`}
+            className={`underline underline-offset-2 ${onDark ? "text-white hover:text-violet-200" : "text-violet-700 dark:text-violet-300 hover:text-violet-900 dark:hover:text-violet-200"}`}>
+            {PROJECTS[s]}
+          </Link>
+        </span>
+      ))}
+    </p>
   );
 }
 
 export default function SkillsContent() {
   const { lang } = useLanguage();
   const t = i18n[lang].skills;
+  const c = copy[lang] ?? copy.en;
 
   return (
-    <div className="relative min-h-screen flex flex-col">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-violet-400/10 dark:bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 dot-grid pointer-events-none opacity-40" />
+    <div className="pt-28 pb-24 px-5 sm:px-8 lg:px-12">
+      <header className="max-w-3xl mb-14">
+        <p className="text-sm font-semibold text-violet-700 dark:text-violet-300 mb-3">{t.tag}</p>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+          {t.titleMain} <span className="gradient-text">{t.titleHighlight}</span>
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">{t.desc}</p>
+      </header>
 
-      <div className="relative flex flex-col flex-1 px-5 sm:px-8 lg:px-12 pt-24 pb-8">
-
-        {/* Header */}
-        <div className="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-          <div>
-            <p className="text-violet-600 dark:text-violet-400 font-medium text-xs mb-1 tracking-widest uppercase">
-              {t.tag}
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
-              {t.titleMain}{" "}
-              <span className="gradient-text">{t.titleHighlight}</span>
-            </h1>
-          </div>
-          <p className="text-gray-500 dark:text-gray-400 text-sm max-w-xs">
-            {t.desc.split(".NET + Next.js")[0]}
-            <strong className="text-violet-700 dark:text-violet-400 font-semibold">.NET + Next.js</strong>
-            {t.desc.split(".NET + Next.js")[1]}
-          </p>
-        </div>
-
-        {/* 2×2 Section Grid */}
-        <div className="grid sm:grid-cols-2 gap-4 flex-1">
-          {sections.map((section) => (
-            <div key={section.key} className="glass-card rounded-2xl overflow-hidden flex flex-col">
-              <div className={`h-1 bg-gradient-to-r ${section.accent}`} />
-              <div className="p-5 flex flex-col flex-1">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className={`w-1 h-4 rounded-full bg-gradient-to-b ${section.accent}`} />
-                  <h2 className="text-sm font-semibold text-gray-900 dark:text-white tracking-wide">
-                    {t.sections[section.key] || section.key}
-                  </h2>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {section.skills.map((skill) => (
-                    <SkillPill key={skill.name} skill={skill} />
-                  ))}
-                </div>
+      {/* Keahlian bisnis: titik fokus halaman (blok ungu tua). */}
+      <section aria-labelledby="business-heading" className="rounded-lg bg-violet-950 text-white p-8 sm:p-10 lg:p-12 mb-16">
+        <h2 id="business-heading" className="text-2xl sm:text-3xl font-bold mb-2">{c.business}</h2>
+        <p className="text-violet-100 mb-10 max-w-2xl">{c.businessLead}</p>
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
+          {c.domains.map((d, i) => (
+            <div key={d.title} className="flex gap-5">
+              <span style={serifStyle} className="text-4xl font-bold text-violet-300 leading-none w-12 flex-shrink-0" aria-hidden="true">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">{d.title}</h3>
+                <p className="text-violet-100 leading-relaxed">{d.desc}</p>
+                {d.project && (
+                  <Link
+                    href={`/portfolio/${d.project}`}
+                    className="inline-block mt-3 text-sm font-semibold text-white underline underline-offset-4 hover:text-violet-200">
+                    {c.seeProject}: {PROJECTS[d.project]}
+                  </Link>
+                )}
               </div>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Inline CTA */}
-        <div className="mt-4 glass-card rounded-2xl px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-gray-600 dark:text-gray-400 text-center sm:text-left">
-            <strong className="text-gray-900 dark:text-white">{t.ctaStrong}</strong>
-            {t.ctaText}
-          </p>
-          <a
-            href="https://wa.me/6285640229650?text=Halo%20Muhamad%20Windy,%20Saya%20ingin%20menawari%20anda%20pekerjaan."
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary text-sm whitespace-nowrap flex-shrink-0">
-            {t.hireMe}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
+      <section aria-labelledby="core-heading" className="mb-16">
+        <h2 id="core-heading" className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">{c.core}</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">{c.coreLead}</p>
+        <div className="grid md:grid-cols-2 gap-5">
+          {c.coreItems.map((item) => (
+            <div key={item.name} className="glass-card rounded-lg p-7 sm:p-8">
+              <p style={serifStyle} className="text-4xl sm:text-5xl font-bold text-violet-700 dark:text-violet-300 mb-3">
+                {item.name}
+              </p>
+              <p className="text-gray-700 dark:text-gray-200 leading-relaxed">{item.use}</p>
+              <ProjectLinks slugs={item.projects} label={c.usedIn} />
+            </div>
+          ))}
         </div>
+      </section>
 
+      <section aria-labelledby="other-heading">
+        <h2 id="other-heading" className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8">{c.other}</h2>
+        <div className="divide-y divide-gray-200 dark:divide-white/10 border-y border-gray-200 dark:border-white/10">
+          {sections.map((section) => (
+            <div key={section.key} className="grid md:grid-cols-12 gap-4 md:gap-8 py-8">
+              <h3 className="md:col-span-4 text-xl font-bold text-gray-900 dark:text-white">
+                {t.sections[section.key] || section.key}
+              </h3>
+              <ul className="md:col-span-8 grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                {section.skills.map((skill) => (
+                  <li key={skill.name}>
+                    <p className="font-semibold text-gray-900 dark:text-white">
+                      {skill.name === "Other" && lang === "id" ? "Lainnya" : skill.name}
+                    </p>
+                    {skill.note && <p className="text-sm text-gray-700 dark:text-gray-300">{skill.note}</p>}
+                    <ProjectLinks slugs={skill.projects} label={c.usedIn} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+        <p className="text-lg text-gray-700 dark:text-gray-200 max-w-2xl">
+          <strong className="text-gray-900 dark:text-white">{t.ctaStrong}</strong>
+          {t.ctaText}
+        </p>
+        <Link href="/contact" className="btn-primary text-sm whitespace-nowrap self-start sm:self-auto">
+          {t.hireMe}
+        </Link>
       </div>
     </div>
   );
